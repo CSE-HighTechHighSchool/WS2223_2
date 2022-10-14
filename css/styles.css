@@ -1,11 +1,16 @@
 
+.nav-item {
+    font-family: 'Open Sans', sans-serif;
+}
+
 /* -----------------Underline Animation CSS -----------------*/
 .hover-underline-animation {
     display: inline-block;
     position: relative;
     /*color: #0087ca;*/
   }
-  
+
+
 .hover-underline-animation:after {
     content: '';
     position: absolute;
