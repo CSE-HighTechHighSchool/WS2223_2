@@ -17,18 +17,19 @@ h1 {
 /* --- Class CSS --- */
 
 .fade-in {
-    margin: 0 auto;
-    animation: typing 10s steps(30, end), blinking-cursor .5s step-end;
-  }
+    animation: fadeInAnimation ease 3s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+}
   
-  @keyframes typing {
-    from {
-      width: 0
+@keyframes fadeInAnimation {
+    0% {
+        opacity: 0;
     }
-    to {
-      width: 100%
-    }
-  }
+    100% {
+        opacity: 1; 
+     }
+}
   
 
 
