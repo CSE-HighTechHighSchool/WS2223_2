@@ -10,13 +10,40 @@ img {
     border-radius: 10px;
 }
 
+h1 {
+    font-size: 6rem;
+}
+
 /* --- Class CSS --- */
+
+.fade-in {
+    margin: 0 auto;
+    animation: typing 10s steps(30, end), blinking-cursor .5s step-end;
+  }
+  
+  @keyframes typing {
+    from {
+      width: 0
+    }
+    to {
+      width: 100%
+    }
+  }
+  
+
 
 .top-img {
     background-image: url("./img/image-from-rawpixel-id-3285053-jpeg.jpg");
     background-size: cover;
     min-height: 100vh;
 }
+
+.icon-pos {
+    position: absolute;
+    bottom: 30px;
+}
+
+.icon-anim
 
 .about-author {
     color:rgb(172, 122, 48);
