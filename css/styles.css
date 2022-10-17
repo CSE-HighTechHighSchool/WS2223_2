@@ -17,7 +17,7 @@ h1 {
 /* --- Class CSS --- */
 
 .fade-in {
-    animation: fadeInAnimation ease 3s;
+    animation: fadeInAnimation ease 1s, moveTop ease-out 1s;
     animation-iteration-count: 1;
     animation-fill-mode: forwards;
 }
@@ -29,6 +29,15 @@ h1 {
     100% {
         opacity: 1; 
      }
+}
+
+@keyframes moveTop {
+    0% {
+        top: 40px;
+    }
+    100% {
+        top: 0px;
+    }
 }
   
 
@@ -44,7 +53,53 @@ h1 {
     bottom: 30px;
 }
 
-.icon-anim
+.icon-anim {
+    animation: bounce 3s ease-out;
+    animation-iteration-count: infinite;
+    animation-fill-mode: forwards;
+}
+
+@keyframes bounce {
+    0% {
+        bottom: 30px;
+    }
+    5% {
+        bottom: 40px;
+    }
+    10% {
+        bottom: 45px;
+    }
+    15% {
+        bottom: 40px;
+    }
+    20% {
+        bottom: 30px;
+    }
+    25% {
+        bottom: 37px;
+    }
+    30% {
+        bottom: 40px;
+    }
+    35% {
+        bottom: 37px;
+    }
+    40% {
+        bottom: 30px;
+    }
+    45% {
+        bottom: 35px;
+    }
+    50% {
+        bottom: 37px;
+    }
+    55% {
+        bottom: 35px;
+    }
+    60% {
+        bottom: 30px;
+    }
+}
 
 .about-author {
     color:rgb(172, 122, 48);
