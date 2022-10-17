@@ -1,16 +1,110 @@
-
-.nav-item {
-    font-family: 'Open Sans', sans-serif;
+body {
+    font-family: "Montserrat", Geneva, Tahoma, sans-serif;
 }
 
-/* -----------------Underline Animation CSS -----------------*/
+p {
+    font-family: "Open Sans", Geneva, Tahoma, sans-serif;
+}
+
+img {
+    border-radius: 10px;
+}
+
+/* --- Class CSS --- */
+
+.top-img {
+    background-image: url("./img/image-from-rawpixel-id-3285053-jpeg.jpg");
+    background-size: cover;
+    min-height: 100vh;
+}
+
+.about-author {
+    color:rgb(172, 122, 48);
+}
+
+.author {
+    text-align:center;
+    padding: 10px;
+    
+}
+
+.cardbody {
+    padding: 10px 0px;
+}
+
+.textos {
+    padding: 0px 10px 10px 10px;
+}
+
+.test:hover {
+    filter: drop-shadow(2px 2px 4px #cccccc);
+    transition: filter 50ms linear 50ms;
+}
+
+.nb-stuff {
+    margin: 10px 10px;
+    border-radius: 20px;
+    background-color: #32281c;
+}
+
+.nb-stuff:hover {
+    filter: drop-shadow(0px 3px 3px #3d352c);
+    transition: filter 250ms ease-in 25ms;
+}
+
+.showcase {
+    background-color: rgb(172, 122, 48);
+}
+
+.overview-font {
+    font-size: 1em;
+}
+
+.row-extra {
+    border-top: solid 2px white;
+    margin: 0;
+}
+
+.icon-white {
+    color: #000;
+}
+
+.row-thing {
+    background-color: #dec099;
+    border-radius: 20px;
+    margin: 15px 0px;
+}
+
+/* --- ID CSS --- */
+
+#ovPadLeft {
+    padding-left: 20px;
+}
+
+#ovPadRight {
+    padding-right: 20px;
+}
+
+#img-thing {
+    margin: 0;
+}
+
+div#about {
+    margin: auto;
+}
+
+#procedure-block {
+    padding: 20px 0px;
+}
+
+/* --- Underline Animation CSS --- */
+
 .hover-underline-animation {
     display: inline-block;
     position: relative;
     /*color: #0087ca;*/
   }
-
-
+  
 .hover-underline-animation:after {
     content: '';
     position: absolute;
@@ -27,4 +121,8 @@
 .hover-underline-animation:hover:after {
     transform: scaleX(1);
     /*transform-origin: bottom left;*/
+}
+
+#navmenu ul li {
+    padding: 0px 20px;
 }
