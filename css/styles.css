@@ -6,10 +6,6 @@ p {
     font-family: "Open Sans", Geneva, Tahoma, sans-serif;
 }
 
-img {
-    border-radius: 10px;
-}
-
 h1 {
     font-size: 5rem;
 }
@@ -144,9 +140,22 @@ h1 {
     transition: filter 250ms ease-in 25ms;
 }
 
-.showcase {
-    background-color: rgb(172, 122, 48);
+.yellow-col {
+    background-color: #EEB34B;
+    border-color: #EEB34B;
 }
+
+.beige-col {
+    background-color: #eee7d9;
+    border-color: #eee7d9;
+    ;
+}
+
+.orange-col {
+    background-color: #FE8529;
+    border-color: #FE8529
+}
+
 
 .overview-font {
     font-size: 1em;
