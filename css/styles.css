@@ -220,7 +220,7 @@ div#about {
 }
   
 .hover-underline-animation:hover:after {
-    transform: scaleX(1);
+    transform: scaleX(.8);
     /*transform-origin: bottom left;*/
 }
 
