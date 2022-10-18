@@ -124,20 +124,16 @@ h1 {
     padding: 0px 10px 10px 10px;
 }
 
-.test:hover {
-    filter: drop-shadow(2px 2px 4px #cccccc);
-    transition: filter 50ms linear 50ms;
-}
-
 .nb-stuff {
     /*margin: 10px 10px;
     border-radius: 20px;*/
     background-color: #32281c;
+    transition: filter 500ms ease-in;
 }
 
 .nb-stuff:hover {
     filter: drop-shadow(0px 3px 3px #3d352c);
-    transition: filter 250ms ease-in 25ms;
+    transition: filter 500ms ease-out;
 }
 
 .yellow-col {
