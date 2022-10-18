@@ -12,6 +12,10 @@ h1 {
 
 /* --- Class CSS --- */
 
+.border-round {
+    border-radius: 20px;
+}
+
 .fade-in {
     animation: fadeInAnimation ease 1s, moveTop ease-out 1s;
     animation-iteration-count: 1;
