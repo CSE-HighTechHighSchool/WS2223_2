@@ -5,6 +5,11 @@
 
 .staffcard{
     transition: filter 500ms ease-in;
+    border-radius: 15px;
+}
+
+.staffcard img {
+    border-radius: 15px;
 }
 
 
