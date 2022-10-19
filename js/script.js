@@ -52,3 +52,18 @@ const fadeLeft = new IntersectionObserver(
 invisLeft.forEach(invis => {
     fadeLeft.observe(invis)
 })
+
+const background = document.querySelector(".top-img")
+const nb = document.querySelector(".nb-stuff")
+
+const nbBackground = new IntersectionObserver(
+    entries => {
+        if (entries[0].intersectionRatio === 1) {nb.classList.remove("dark-brown-col");}
+	    // fully intersects with screen
+	    else {nb.classList.add("dark-brown-col");}
+    }, { 
+        threshold: [0,1] 
+    }
+)
+
+nbBackground.observe(background);
