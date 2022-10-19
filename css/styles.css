@@ -36,7 +36,27 @@ hr {
     animation-fill-mode: forwards;
 }
 
+.fade-right {
+    animation: fadeInAnimation ease 1s, moveRight ease-out 1s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+}
+
+.fade-left {
+    animation: fadeInAnimation ease 1s, moveLeft ease-out 1s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+}
+
 .fades {
+    opacity: 0%;
+}
+
+.fadesLeft {
+    opacity: 0%;
+}
+
+.fadesRight {
     opacity: 0%;
 }
   
@@ -55,6 +75,24 @@ hr {
     }
     100% {
         top: 0px;
+    }
+}
+
+@keyframes moveRight {
+    0% {
+        right: 100px;
+    }
+    100% {
+        right: 0px;
+    }
+}
+
+@keyframes moveLeft {
+    0% {
+        left: 100px;
+    }
+    100% {
+        left: 0px;
     }
 }
 
