@@ -210,10 +210,6 @@ hr {
     padding: 10px 0px;
 }
 
-.textos {
-    padding: 0px 10px 10px 10px;
-}
-
 .nb-stuff {
     /*margin: 10px 10px;
     border-radius: 20px;
@@ -264,35 +260,12 @@ hr {
     }
 }
 
-.row-extra {
-    border-top: solid 2px white;
-    margin: 0;
-}
-
 .icon-white {
     color: #000;
 }
 
-.row-thing {
-    background-color: #dec099;
-    border-radius: 20px;
-    margin: 15px 0px;
-}
-
 /* --- ID CSS --- */
 
-
-#img-thing {
-    margin: 0;
-}
-
-div#about {
-    margin: auto;
-}
-
-#procedure-block {
-    padding: 20px 0px;
-}
 
 /* --- Underline Animation CSS --- */
 
