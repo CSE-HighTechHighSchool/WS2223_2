@@ -7,7 +7,7 @@ p {
 }
 
 h1 {
-    font-size: 4.5rem;
+    font-size: max(calc(4.8vw), 4rem);
 }
 
 a {
@@ -52,6 +52,10 @@ hr {
     100% {
         top: 0px;
     }
+}
+
+.responsive-revs {
+    font-size: max(calc(2.5vw - 20px), 18px);
 }
   
 .logo{
