@@ -22,7 +22,7 @@ p {
 }
 
 h1 {
-    font-size: max(calc(4.8vw), 4rem);
+    font-size: max(calc(5vw), 3.5rem);
 }
 
 a {
@@ -67,16 +67,16 @@ hr {
     opacity: 0%;
 }
 
-.col.fades:nth-of-type(1) {
-    animation-delay: 250ms;
+.row .fades:nth-of-type(1) {
+    animation-delay: 150ms;
 }
 
-.col.fades:nth-of-type(2) {
-    animation-delay: 500ms;
+.row .fades:nth-of-type(2) {
+    animation-delay: 300ms;
 }
 
-.col.fades:nth-of-type(3) {
-    animation-delay: 750ms;
+.row .fades:nth-of-type(3) {
+    animation-delay: 450ms;
 }
 
 .fadesLeft {
@@ -132,7 +132,7 @@ hr {
 }
 
 .logo:hover{
-    width: 30% !important;
+    width: 60% !important;
     rotate: 10deg;
     transition: width 500ms ease-in-out, rotate 500ms ease-in-out;  
 }
@@ -320,3 +320,19 @@ hr {
         transform-origin: bottom right;
     }
 }*/
+
+@media screen and (max-width: 992px) {
+    /*.hover-underline-animation:hover:after {
+        transform: scaleX(0.3);
+        transform-origin: bottom right;
+    }
+
+    .hover-underline-animation:after {
+        transform-origin: bottom right;
+    }*/
+
+    .nb-stuff, .dark-brown-col, .post-anim-nb {
+        background-color: rgba(50, 40, 28, 100);
+        animation: none;
+    }
+}
