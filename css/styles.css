@@ -35,6 +35,10 @@ hr {
     animation-iteration-count: 1;
     animation-fill-mode: forwards;
 }
+
+.fades {
+    opacity: 0%;
+}
   
 @keyframes fadeInAnimation {
     0% {
