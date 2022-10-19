@@ -55,12 +55,18 @@ invisLeft.forEach(invis => {
 
 const background = document.querySelector(".top-img")
 const nb = document.querySelector(".nb-stuff")
+let changeUps = 0
 
 const nbBackground = new IntersectionObserver(
     entries => {
-        if (entries[0].intersectionRatio === 1) {nb.classList.remove("dark-brown-col");}
+        if (entries[0].intersectionRatio === 1) {
+            nb.classList.remove("dark-brown-col");
+            if (changeUps >= 1) {
+                nb.classList.add("post-anim-nb");
+            }
+        }
 	    // fully intersects with screen
-	    else {nb.classList.add("dark-brown-col");}
+	    else {nb.classList.add("dark-brown-col"); nb.classList.add("post-anim-nb"); changeUps += 1;}
     }, { 
         threshold: [0,1] 
     }

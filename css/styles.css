@@ -222,6 +222,12 @@ hr {
     transition: filter 500ms ease-out;
 }
 
+.post-anim-nb {
+    animation: fill-out ease-in 250ms;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+}
+
 .yellow-col {
     background-color: #d09c43;
     border-color: #d09c43;
@@ -248,7 +254,6 @@ hr {
     animation: fill-in ease-out 250ms;
     animation-iteration-count: 1;
     animation-fill-mode: forwards;
-    background-color: #32281c;
 }
 
 @keyframes fill-in {
@@ -257,6 +262,15 @@ hr {
     }
     100% {
         background-color: rgba(50, 40, 28, 100)
+    }
+}
+
+@keyframes fill-out {
+    0% {
+        background-color: rgba(50, 40, 28, 100)
+    }
+    100% {
+        background-color: rgba(50, 40, 28, 0)
     }
 }
 
