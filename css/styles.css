@@ -217,8 +217,8 @@ hr {
 
 .nb-stuff {
     /*margin: 10px 10px;
-    border-radius: 20px;*/
-    background-color: #32281c;
+    border-radius: 20px;
+    background-color: #32281c;*/
     transition: filter 500ms ease-in;
 }
 
@@ -247,6 +247,22 @@ hr {
     background-color: #4d3f2d;
     border-color: #4d3f2d;
 
+}
+
+.dark-brown-col {
+    animation: fill-in ease-out 250ms;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+    background-color: #32281c;
+}
+
+@keyframes fill-in {
+    0% {
+        background-color: rgba(50, 40, 28, 0)
+    }
+    100% {
+        background-color: rgba(50, 40, 28, 100)
+    }
 }
 
 .row-extra {
