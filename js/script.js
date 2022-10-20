@@ -92,6 +92,8 @@ const nbBackground = new IntersectionObserver(
 
 nbBackground.observe(background);
 
+/* Changes button state based off of card button classList **/
+
 const cardOnClick = (element) => {
     if (element.classList.contains("card-button-clicked")) {
         element.classList.remove("card-button-clicked")
