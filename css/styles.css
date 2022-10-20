@@ -225,6 +225,11 @@ a:hover {
     border-radius: 20px;
 }
 
+.border-less-round {
+    border-radius: 5px;
+    border: none;
+}
+
 /*
     Card formatting and animations
 */
@@ -275,6 +280,10 @@ a:hover {
     transition: rotate 150ms ease-in-out, filter 150ms ease-in-out;
 }
 
+/*
+    Modal CSS
+*/
+
 /* 
     Some important colors for the color scheme (should change this to variables at some point?) 
 */
@@ -298,6 +307,11 @@ a:hover {
 }
 
 .orange-col {
+    background-color: #FE8529;
+    border-color: #FE8529;
+}
+
+.orange-col:hover {
     background-color: #FE8529;
     border-color: #FE8529;
 }
