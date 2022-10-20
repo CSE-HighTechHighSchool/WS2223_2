@@ -259,22 +259,45 @@ a:hover {
     border-radius: 15px;
 }
 
-/* Some important colors for the color scheme (should change this to variables at some point?) */
+/* Card accordion formatting */
+
+.card-button:not(.collapsed)::after {
+    color: #FE8529;
+}
+
+.card-button.collapsed::after {
+    color: #4d3f2d;
+}
+
+/* 
+    Some important colors for the color scheme (should change this to variables at some point?) 
+*/
 
 .yellow-col {
     background-color: #d09c43;
     border-color: #d09c43;
 }
 
+.yellow-text {
+    color: #d09c43;
+}
+
 .beige-col {
     background-color: #eee7d9;
     border-color: #eee7d9;
-    ;
+}
+
+.beige-text {
+    color: #eee7d9;
 }
 
 .orange-col {
     background-color: #FE8529;
-    border-color: #FE8529
+    border-color: #FE8529;
+}
+
+.orange-text {
+    color: #FE8529;
 }
 
 .brown-col {
@@ -283,11 +306,27 @@ a:hover {
 
 }
 
+.brown-text {
+    color: #4d3f2d;
+}
+
 /* Special; used for navbar animation */
 .dark-brown-col {
     animation: fill-in ease-out 250ms;
     animation-iteration-count: 1;
     animation-fill-mode: forwards;
+}
+
+/* 
+    Misc. 
+*/
+
+.small {
+    font-size: 12px;
+}
+
+.tiny {
+    font-size: 8px;
 }
 
 
@@ -334,7 +373,7 @@ a:hover {
     }
 }*/
 
-
+/* Alternate navbar configuration for smaller screens. Always brown.*/
 
 @media screen and (max-width: 992px) {
 
