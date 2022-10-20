@@ -91,3 +91,12 @@ const nbBackground = new IntersectionObserver(
 )
 
 nbBackground.observe(background);
+
+const cardOnClick = (element) => {
+    if (element.classList.contains("card-button-clicked")) {
+        element.classList.remove("card-button-clicked")
+    } else {
+        element.classList.add("card-button-clicked")
+    }
+}
+  
