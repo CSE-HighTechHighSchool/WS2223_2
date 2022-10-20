@@ -148,6 +148,7 @@ a:hover {
  
 /* Logo animation, sizes up and rotates a bit when hovered over */
 .logo{
+    width:100%;
     transition: width 500ms ease-in-out, rotate 500ms ease-in-out;
 }
 
