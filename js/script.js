@@ -68,7 +68,7 @@ invisLeft.forEach(invis => {
 
 
 /* 
-    The final intersection observer is used to observe the navbar. When 100% of the background image is seen on screen, the navbar must be at the very top of the page. The function then takes away any existing background color, and adds a post-animation if there was background color to begin with. If 100% of the background image is not on sreen, it will add a background color class, making the navbar brown.
+    The fourth intersection observer is used to observe the navbar. When 100% of the background image is seen on screen, the navbar must be at the very top of the page. The function then takes away any existing background color, and adds a post-animation if there was background color to begin with. If 100% of the background image is not on sreen, it will add a background color class, making the navbar brown.
 **/
 
 const background = document.querySelector(".top-img")

@@ -261,12 +261,17 @@ a:hover {
 
 /* Card accordion formatting */
 
-.card-button:not(.collapsed)::after {
-    color: #FE8529;
+.card-button {
+    border: none;
+    background: none;
+    padding-top: 7px;
+    transition: rotate 150ms ease-in-out;
 }
 
-.card-button.collapsed::after {
-    color: #4d3f2d;
+.card-button:active {
+    rotate: 180deg;
+    filter: contrast(50%) brightness(75%);
+    transition: rotate 150ms ease-in-out, filter 150ms ease-in-out;
 }
 
 /* 
