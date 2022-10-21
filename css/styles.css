@@ -335,9 +335,8 @@ a:hover {
 }
 
 .brown-2-col {
-    background-color: rgba(50, 40, 28, 100);
-    border-color: rgba(50, 40, 28, 100);
-    opacity: 50%;
+    background-color: rgba(50, 40, 28, 0.8);
+    border-color: rgba(50, 40, 28, 0.8);
 }
 
 .brown-text {
