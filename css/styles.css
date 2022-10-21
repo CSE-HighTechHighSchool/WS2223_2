@@ -280,6 +280,14 @@ a:hover {
     transition: rotate 150ms ease-in-out, filter 150ms ease-in-out;
 }
 
+/* 
+    Carousel Code 
+*/
+
+.about-carousel .carousel-item {
+  height: 84vh;
+}
+
 /*
     Modal CSS
 */
@@ -324,6 +332,12 @@ a:hover {
     background-color: #4d3f2d;
     border-color: #4d3f2d;
 
+}
+
+.brown-2-col {
+    background-color: rgba(50, 40, 28, 100);
+    border-color: rgba(50, 40, 28, 100);
+    opacity: 50%;
 }
 
 .brown-text {
