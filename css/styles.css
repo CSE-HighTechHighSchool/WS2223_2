@@ -284,6 +284,10 @@ a:hover {
     Carousel Code 
 */
 
+.about-carousel .carousel-item {
+  height: 84vh;
+}
+
 /*
     Modal CSS
 */
