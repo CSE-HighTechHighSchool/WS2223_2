@@ -25,7 +25,9 @@ a:hover {
     color: #4d3f2d;
 }
 
-
+.underline{
+    text-decoration: underline;
+}
 
 /* --- Class CSS --- */
 
@@ -280,12 +282,25 @@ a:hover {
     transition: rotate 150ms ease-in-out, filter 150ms ease-in-out;
 }
 
+h1.menu-title {
+    font-size: max(calc(2.25vw), 1rem);
+}
+
+.menu-item {
+    font-size: max(1.5vw,0.75rem)
+}
+
+.menu-header {
+    font-size: max(1.75vw,1.25rem)
+}
+
+
 /* 
     Carousel Code 
 */
 
 .about-carousel .carousel-item {
-  height: 84vh;
+  height: calc(100vh - 96px);
 }
 
 /*
@@ -350,9 +365,11 @@ a:hover {
     animation-fill-mode: forwards;
 }
 
-/* 
-    Misc. 
-*/
+.combo{
+    object-fit: cover;
+    min-height: 400px;
+    max-height: 700px;
+}
 
 .small {
     font-size: 12px;
