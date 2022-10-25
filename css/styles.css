@@ -22,7 +22,7 @@ a {
 }
 
 a:hover {
-    color: #4d3f2d;
+    color: rgba(50, 40, 28, 100);
 }
 
 .underline{
