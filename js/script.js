@@ -102,7 +102,9 @@ const cardOnClick = (element) => {
     }
 }
 
-/* Zoom animations. */
+/* 
+    Zoom animations. The first zooms in, the second zooms out.
+*/
   
 const zoomIn = document.querySelectorAll(".zoom-in")
 
