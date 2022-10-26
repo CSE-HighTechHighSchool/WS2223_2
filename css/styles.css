@@ -22,7 +22,7 @@ a {
 }
 
 a:hover {
-    color: rgba(50, 40, 28, 100);
+    color: #eee7d9;
 }
 
 .underline{
@@ -385,11 +385,6 @@ h1.menu-title {
 }
 
 .orange-col {
-    background-color: #FE8529;
-    border-color: #FE8529;
-}
-
-.orange-col:hover {
     background-color: #FE8529;
     border-color: #FE8529;
 }
