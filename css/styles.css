@@ -379,6 +379,16 @@ h1.menu-title {
     font-size: 8px;
 }
 
+.image-disp {
+    filter: grayscale(1);
+    transition: filter 250ms ease-in-out;
+}
+
+.image-disp:hover {
+    filter: grayscale(0);
+    transition: filter 250ms ease-in-out;
+}
+
 
 /* --- ID CSS --- */
 
