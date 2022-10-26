@@ -328,10 +328,12 @@ h1.menu-title {
 
 .zoom-in-anim {
     animation: zoomIn ease-in-out 2500ms;
+    transform: scale(1);
 }
 
 .zoom-out-anim {
     animation: zoomOut ease-in-out 2500ms;
+    transform: scale(1);
 }
 
 @keyframes zoomIn {
