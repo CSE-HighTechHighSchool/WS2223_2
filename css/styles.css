@@ -313,6 +313,10 @@ h1.menu-title {
     transition: filter 250ms ease-in-out;
 }
 
+.black-arrow/*, .carousel-indicators */ {
+    filter: invert(100%);
+}
+
 .image-disp:hover {
     filter: grayscale(0);
     transition: filter 250ms ease-in-out;
