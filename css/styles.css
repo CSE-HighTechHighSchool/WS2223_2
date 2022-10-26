@@ -308,6 +308,50 @@ h1.menu-title {
   height: calc(100vh - 96px);
 }
 
+.image-disp {
+    filter: grayscale(1);
+    transition: filter 250ms ease-in-out;
+}
+
+.image-disp:hover {
+    filter: grayscale(0);
+    transition: filter 250ms ease-in-out;
+}
+
+.zoom-in {
+    transform: scale(0.9);
+}
+
+.zoom-out {
+    transform: scale(1.1);
+}
+
+.zoom-in-anim {
+    animation: zoomIn ease-in-out 2500ms;
+}
+
+.zoom-out-anim {
+    animation: zoomOut ease-in-out 2500ms;
+}
+
+@keyframes zoomIn {
+    0% {
+        transform: scale(0.9);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+@keyframes zoomOut {
+    0% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
 /*
     Modal CSS
 */
@@ -381,16 +425,6 @@ h1.menu-title {
 
 .tiny {
     font-size: 8px;
-}
-
-.image-disp {
-    filter: grayscale(1);
-    transition: filter 250ms ease-in-out;
-}
-
-.image-disp:hover {
-    filter: grayscale(0);
-    transition: filter 250ms ease-in-out;
 }
 
 

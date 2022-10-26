@@ -101,4 +101,43 @@ const cardOnClick = (element) => {
         element.classList.add("card-button-clicked")
     }
 }
+
+/* Zoom animations. */
   
+const zoomIn = document.querySelectorAll(".zoom-in")
+
+const zoomingIn = new IntersectionObserver(
+    entries => {
+        entries.forEach(entry => {
+            entry.target.classList.toggle("zoom-in-anim", entry.isIntersecting)
+            if (entry.isIntersecting) zoomingIn.unobserve(entry.target)
+        })
+    }, 
+    {
+        threshold: 0.8,
+    }
+)
+
+zoomIn.forEach(zoom => {
+    zoomingIn.observe(zoom)
+})
+
+
+
+const zoomOut = document.querySelectorAll(".zoom-out")
+
+const zoomingOut = new IntersectionObserver(
+    entries => {
+        entries.forEach(entry => {
+            entry.target.classList.toggle("zoom-out-anim", entry.isIntersecting)
+            if (entry.isIntersecting) zoomingOut.unobserve(entry.target)
+        })
+    }, 
+    {
+        threshold: 0.8,
+    }
+)
+
+zoomOut.forEach(zoom => {
+    zoomingOut.observe(zoom)
+})
