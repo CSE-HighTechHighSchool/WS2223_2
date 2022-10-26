@@ -109,6 +109,11 @@ a:hover {
     min-height: 100vh;
 }
 
+.carousel-img {
+    background-size: cover;
+    height: calc(100vh - 96px);
+}
+
 /* Base navbar class (has a drop shadow) */
 .nb-stuff {
     /*margin: 10px 10px;
@@ -299,7 +304,7 @@ h1.menu-title {
     Carousel Code 
 */
 
-.about-carousel .carousel-item {
+.about-carousel .carousel-inner .carousel-item {
   height: calc(100vh - 96px);
 }
 
