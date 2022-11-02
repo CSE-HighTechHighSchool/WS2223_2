@@ -2,11 +2,11 @@
 
 /* Sets basic font families*/
 body {
-    font-family: "Montserrat", Geneva, Tahoma, sans-serif;
+    font-family: "Livvic", Geneva, Tahoma, sans-serif;
 }
 
-p {
-    font-family: "Open Sans", Geneva, Tahoma, sans-serif;
+h5, h6, p {
+    font-family: "Montserrat", Geneva, Tahoma, sans-serif;
 }
 
 /* Resizes h1 (title size) based off of viewport width */
