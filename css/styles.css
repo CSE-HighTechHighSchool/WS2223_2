@@ -3,6 +3,7 @@
 /* Sets basic font families*/
 body {
     font-family: "Livvic", Geneva, Tahoma, sans-serif;
+    background-color: #4d3f2d;
 }
 
 h5, h6, p {
@@ -29,6 +30,30 @@ a:hover {
     text-decoration: underline;
 }
 
+/* --- Scrollbar CSS --- */
+
+/* Let's get this party started */
+::-webkit-scrollbar {
+    width: 12px;
+}
+ 
+/* Track */
+::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
+    background-color: #4d3f2d;
+    -webkit-border-radius: 3px;
+    border-radius: 10px;
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+    background: rgb(172, 122, 48);  
+}
+::-webkit-scrollbar-thumb:window-inactive {
+ background: rgb(172, 122, 48); 
+}
 /* --- Class CSS --- */
 
 /* 
@@ -431,6 +456,10 @@ h1.menu-title {
 
 
 /* --- ID CSS --- */
+
+#border-right {
+    border-right: 4px solid #4d3f2d;
+}
 
 
 /* --- Underline Animation CSS --- */

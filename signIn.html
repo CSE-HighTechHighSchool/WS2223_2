@@ -11,7 +11,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Our Team</title>
+  <title>Sign In</title>
   <link rel="icon" type="image/x-icon" alt="Logo" href="img/fusion-icon.png">
 
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -50,7 +50,7 @@
             <a class="nav-link hover-underline-animation" href="menu.html"><strong>Menu</strong></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link hover-underline-animation active" href="team.html"><strong>Our Team</strong></a>
+            <a class="nav-link hover-underline-animation" href="team.html"><strong>Our Team</strong></a>
           </li>
           <li class="nav-item">
             <a class="nav-link hover-underline-animation" href="about.html"><strong>About Us</strong></a>
@@ -59,7 +59,7 @@
             <a class="nav-link hover-underline-animation" href="order.html"><strong>Order Here</strong></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link hover-underline-animation" href="signIn.html"><strong>Sign In</strong></a>
+            <a class="nav-link hover-underline-animation active" href="signIn.html"><strong>Sign In</strong></a>
           </li>
         </ul>
 
@@ -78,8 +78,8 @@
   <div class="top-img d-flex" style="background-image:url(img/background-team.png)">
     <div class="container d-flex text-light align-items-center justify-content-center text-center">
       <div class="container m-auto position-relative fades">
-        <h1><strong>Our Team</strong></h1>
-        <h6>Scroll down to see the people behind Fusion 360 Fusion Cuisine.</h6>
+        <h1><strong>Sign In</strong></h1>
+        <h6>Admins only. Sign in or register an admin account.</h6>
       </div>
       <a href="#intro" class="position-absolute icon-pos icon-anim text-light">
         <i class="down-arrow-index bi bi-arrow-down-circle-fill h2"></i>
@@ -91,158 +91,66 @@
   Hidden section. Has a gradient that looks good when scrolling.
 -->
 
-  <section class="text-dark p-4 text-center" style="background-image: linear-gradient(#32281c, #eee7d9);" id="intro">
-  </section>
+<section class="text-dark p-5 text-center" style="background-image: linear-gradient(#32281c, #eee7d9);" id="intro">
+</section>
 
   <!--
-  Row one of employees.
--->
+  Sign in and Register form
+  -->
 
-  <div class="beige-col pt-3 pb-4">
+  
+<div class="beige-col brown-text">
     <div class="container-fluid">
-      <div class="row" style="margin: 50px 0px">
-        <!-- Evan Chang -->
-        <div class="position-relative col-12 col-md-4 col-lg-4 pb-3 fades">
-          <div class="card border-1 staffcard">
-            <img src="img/pfp-evan.jpeg" class="card-img-top" alt="Evan Chang"
-              style="object-fit: cover; height: 330px; object-position: center;">
-            <div class="card-body text-center">
-              <h5 class="card-title mb-0">Evan Chang</h5>
-              <div class="card-text text-black-50">Co-founder</div>
-
-              <button class="card-button" type="button" data-bs-toggle="collapse" data-bs-target="#chang"
-                onclick="cardOnClick(this)">
-                <i class="bi bi-caret-down-fill orange-text h2"></i>
-              </button>
-              <div id="chang" class="collapse brown-text">
-                <strong>Evan Chang</strong> is a co-founder of Fusion 360 Fusion Cuisine. Besides cooking food, he also likes writing music.
-
-              </div>
-
+      <div class="row justify-content-center align-items-center">
+        <div class="position-relative col-12 col-md-5 col-lg-5 pb-3 fades justify-content-center align-items-center">
+            <div class="container">
+                <h2 class="text-center">Sign In</h2><br>
             </div>
-          </div>
+            <!--Sign Up -->
+            <div class="signUpForm">
+                <form>
+                    <input type="email" placeholder="Email" id="loginEmail" class="form-control mb-3">
+                    <input type="password" placeholder="password" id="loginPassword" class="form-control mb-3">
+                    <div class="form-check form-switch mb-3">
+                        <input class="form-check-input" type="checkbox" role="switch" id="keepLoggedInSwitch">
+                        <label class="form-check-label" for="flexSwitchCheckDefault">Keep me signed in</label>
+                    </div>
+                    <button type="button" id="signIn" name="signIn" class="btn btn-outline-danger mb-3 w-100">Sign
+                        In</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="position-relative col-12 col-md-1 col-lg-1 m-0 p-0 fades">
+            <div class="container orange-text">
+                <hr>
+                <h5 class="text-center">- OR -</h5>
+                <hr>
+            </div>
         </div>
 
 
         <!-- Xhaiden D'Souza -->
-        <div class="position-relative col-12 col-md-4 col-lg-4 pb-3 fades">
-          <div class="card border-1 staffcard">
-            <img src="img/pfp-xhaiden.png" class="card-img-top" alt="Xhaiden D'Souza"
-              style="object-fit: cover; height: 330px;">
-            <div class="card-body text-center">
-              <h5 class="card-title mb-0">Xhaiden D'souza</h5>
-              <div class="card-text text-black-50">Co-founder</div>
+        <div class="position-relative col-12 col-md-5 col-lg-5 pt-3 pb-3 fades justify-content-center align-items-center">
+            <div class="container-fluid pb-5">
 
-              <button class="card-button" type="button" data-bs-toggle="collapse" data-bs-target="#dsouza"
-                onclick="cardOnClick(this)">
-                <i class="bi bi-caret-down-fill orange-text h2"></i>
-              </button>
-              <div id="dsouza" class="collapse brown-text">
-                Born at a very young age, <strong>Xhaiden D'Souza</strong> soon became a co-founder of Fusion 360 Fusion Cuisine, 
-                and he is known for his creative vision.
-              </div>
-
+                <div class="container">
+                <h2 class="text-center pt-3">Register</h2><br>
+                </div>
+                <div class="signUpForm">     
+                    <form>
+                        <input type="text" placeholder="Name" id="name" class="form-control mb-3">
+                        <input type="email" placeholder="Email" id="userEmail" class="form-control mb-3">
+                        <input type="password" placeholder="password" id="userPass" class="form-control mb-3">
+                        <button type = "button" id="submitData" name="submitData" class="btn btn-outline-danger mb-3 w-100">Register</button>
+                    </form>
+                </div>
             </div>
-          </div>
         </div>
 
-        <!-- Sharabh Ojha -->
-        <div class="position-relative col-12 col-md-4 col-lg-4 pb-3 fades">
-          <div class="card border-1 staffcard">
-            <img src="img/pfp-sharabh.jpeg" class="card-img-top" alt="Sharabh Ojha"
-              style="object-fit: cover; height: 330px;">
-            <div class="card-body text-center">
-              <h5 class="card-title mb-0">Sharabh Ojha</h5>
-              <div class="card-text text-black-50">Co-founder</div>
-
-              <button class="card-button" type="button" data-bs-toggle="collapse" data-bs-target="#ojha"
-                onclick="cardOnClick(this)">
-                <i class="bi bi-caret-down-fill orange-text h2"></i>
-              </button>
-              <div id="ojha" class="collapse brown-text">
-                <strong>Sharabh Ojha</strong> is a co-founder of Fusion 360 Fusion Cuisine. He has many years of experience in the food industry.
-              </div>
-
-            </div>
-          </div>
-        </div>
-      </div>
-      <hr>
-      <!-- Row 2 of employees -->
-      <div class="row" style="margin: 50px 0px">
-
-        <!-- https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRutMJGaS_G1SJm_JWhL833cbacpqN_--np1o-RQfseL0YC4k8QD1zmI0EtqBlwFBRsLKU&usqp=CAU -->
-        <!-- Gordon Sheepsay -->
-        <div class="position-relative col-12 col-md-4 col-lg-4 pb-3 fades">
-          <div class="card border-1 staffcard">
-            <img src="img/pfp-gordon-sheepsay.jpeg" class="card-img-top" alt="Gordon Sheepsay"
-              style="object-fit: cover; height: 330px;">
-            <div class="card-body text-center">
-              <h5 class="card-title mb-0">Gordon Sheepsay</h5>
-              <div class="card-text text-black-50">Head Chef</div>
-
-              <button class="card-button" type="button" data-bs-toggle="collapse" data-bs-target="#sheepsay"
-                onclick="cardOnClick(this)">
-                <i class="bi bi-caret-down-fill orange-text h2"></i>
-              </button>
-              <div id="sheepsay" class="collapse brown-text">
-                <strong>Gordon Sheepsay</strong> is the creative mind behind creating and preparing our incredible menu
-                of fusion dishes. His restaurants have won many Michelin Stars.
-              </div>
-
-            </div>
-          </div>
-        </div>
-
-        <!--https://doubles-and-more.com/wp-content/uploads/GatesBill_1_2.jpg -->
-        <!-- Bill Fences -->
-        <div class="position-relative col-12 col-md-4 col-lg-4 pb-3 fades">
-          <div class="card border-1 staffcard">
-            <img src="img/pfp-bill-fences.jpeg" class="card-img-top" alt="Bill Fences"
-              style="object-fit: cover; height: 330px;">
-            <div class="card-body text-center">
-              <h5 class="card-title mb-0">Bill Fences</h5>
-              <div class="card-text text-black-50">Manager</div>
-
-              <button class="card-button" type="button" data-bs-toggle="collapse" data-bs-target="#fences"
-                onclick="cardOnClick(this)">
-                <i class="bi bi-caret-down-fill orange-text h2"></i>
-              </button>
-              <div id="fences" class="collapse brown-text">
-                <strong>Bill Fences</strong> is the head manager of Fusion 360 Fusion Cuisine and helps ensure the best
-                experience for our guests. He has many years of leadership experience, including being the CEO of
-                several companies.
-              </div>
-
-            </div>
-          </div>
-        </div>
-
-        <!-- https://mirrorimages.co/wp-content/uploads/2020/03/Altizer-Scott-01.jpg -->
-        <!-- Steve Tasks -->
-        <div class="position-relative col-12 col-md-4 col-lg-4 pb-3 fades">
-          <div class="card border-1 staffcard">
-            <img src="img/pfp-steve-tasks.jpeg" class="card-img-top" alt="Steve Tasks"
-              style="object-fit: cover; height: 330px;">
-            <div class="card-body text-center">
-              <h5 class="card-title mb-0">Steve Tasks</h5>
-              <div class="card-text text-black-50">Head Waiter</div>
-
-              <button class="card-button" type="button" data-bs-toggle="collapse" data-bs-target="#tasks"
-                onclick="cardOnClick(this)">
-                <i class="bi bi-caret-down-fill orange-text h2"></i>
-              </button>
-              <div id="tasks" class="collapse brown-text">
-                <strong>Steve Tasks</strong> is the head waiter of Fusion 360 Fusion Cuisine. He is very good with
-                technology.
-              </div>
-
-            </div>
-          </div>
-        </div>
       </div>
     </div>
-  </div>
+</div>
 
 
   <!-- 
