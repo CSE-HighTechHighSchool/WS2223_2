@@ -132,6 +132,11 @@ a:hover {
 .top-img {
     background-size: cover;
     min-height: 100vh;
+    background-color: #4d3f2d;
+}
+
+.top-img-2 {
+    min-height: 50vh !important;; 
 }
 
 .carousel-img {
@@ -411,8 +416,8 @@ h1.menu-title {
 }
 
 .orange-col {
-    background-color: #FE8529;
-    border-color: #FE8529;
+    background-color: #ad5613;
+    border-color: #ad5613;
 }
 
 .orange-text {
