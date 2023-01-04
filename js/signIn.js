@@ -61,7 +61,8 @@ document.getElementById('submitData').addEventListener("click", (e) => {
         firstName: firstName,
         lastName: lastName,
         email: email,
-        password: encryptPass(password)
+        password: encryptPass(password),
+        isAdmin: false
       }).then(() => {
       alert("User created successfully");
       window.location.href = "index.html";
@@ -89,7 +90,7 @@ document.getElementById('submitData').addEventListener("click", (e) => {
     let fNameRegex = /^[a-zA-Z]+$/;
     let lNameRegex = /^[a-zA-Z]+$/;
     let emailRegex = /^([a-zA-Z0-9]+)@ctemc\.org$/;
-    let passRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,20}$/;
+    let passRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{6,}$/;
   
     if (isEmptyorSpaces(firstName) || isEmptyorSpaces(lastName) || isEmptyorSpaces(email) || isEmptyorSpaces(password)) {
       alert("Please complete all fields.");
@@ -129,12 +130,11 @@ document.getElementById('signIn').addEventListener("click", (e) => {
     existingLogin(auth, email, password);
 });
 
-existingLogin = (email, password) => {
+const existingLogin = (auth, email, password) => {
   signInWithEmailAndPassword(auth, email, password)
   .then((userCredential) => {
     // Signed in
     const user = userCredential.user;
-    print(user)
 
     // Log sign-in date
     let logDate = new Date();
@@ -153,7 +153,7 @@ existingLogin = (email, password) => {
           } else {
             console.log("No data available");
           }
-        })
+        }})
         .catch((error) => {
           console.error(error);
         });
@@ -169,7 +169,7 @@ existingLogin = (email, password) => {
       const errorMessage = error.message;
       alert("Sign In Error: " + errorMessage + ". Please try again.")
     });
-  });
+  };
   
   // ---------------- Keep User Logged In ----------------------------------//
   
