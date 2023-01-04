@@ -49,23 +49,22 @@ document.getElementById('submitData').addEventListener("click", (e) => {
   
     createUserWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
-      user = userCredential.user
+      // Signed in
+      const user = userCredential.user;
+      // ...
   
       // Add user to database
       // 'Set' will overwrite any existing data at this location or create a new one
       // each new user will be placed in the 'users' collection
-      
       set(ref(db, 'users/' + user.uid + '/accountInfo'), {
         uid: user.uid,
         firstName: firstName,
         lastName: lastName,
         email: email,
-        password: encryptPass(password),
-        isAdmin: false
+        password: encryptPass(password)
       }).then(() => {
       alert("User created successfully");
       window.location.href = "index.html";
-      existingLogin(email, password)
       }).catch((error) => {
         alert("Error creating user: " + error);
       });
@@ -89,14 +88,14 @@ document.getElementById('submitData').addEventListener("click", (e) => {
   function validation(firstName, lastName, email, password) {
     let fNameRegex = /^[a-zA-Z]+$/;
     let lNameRegex = /^[a-zA-Z]+$/;
-    let emailRegex = /^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+).([a-zA-Z]{2,5})$/;
+    let emailRegex = /^([a-zA-Z0-9]+)@ctemc\.org$/;
     let passRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,20}$/;
   
     if (isEmptyorSpaces(firstName) || isEmptyorSpaces(lastName) || isEmptyorSpaces(email) || isEmptyorSpaces(password)) {
       alert("Please complete all fields.");
       return false;
     } else if (!firstName.match(fNameRegex) || !lastName.match(lNameRegex) || !email.match(emailRegex) || !password.match(passRegex)) {
-      alert("Check your data and try again. First name is only capital and lowercase letters. Last name is only capital and lowercase letters. Email must be a valid email address. Password must be at least 6 characters and contain at least one uppercase letter, one lowercase letter, and one number.");
+      alert("Check your data and try again. First name is only capital and lowercase letters. Last name is only capital and lowercase letters. Email must be a valid CTEMC email address. Password must be at least 6 characters and contain at least one uppercase letter, one lowercase letter, and one number.");
       return false;
     }
   
@@ -152,28 +151,25 @@ existingLogin = (email, password) => {
           if (snapshot.val()["accountInfo"].isAdmin) {
             window.location.href = "admin.html";
           } else {
-            window.location.href = "index.html";
+            console.log("No data available");
           }
-        } else {
-          console.log("No data available");
-        }
+        })
+        .catch((error) => {
+          console.error(error);
+        });
       })
       .catch((error) => {
-        console.error(error);
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        alert("Update Error " + errorMessage + ". Please try again.")
       });
     })
     .catch((error) => {
       const errorCode = error.code;
       const errorMessage = error.message;
-      alert("Update Error " + errorMessage + ". Please try again.")
+      alert("Sign In Error: " + errorMessage + ". Please try again.")
     });
-  })
-  .catch((error) => {
-    const errorCode = error.code;
-    const errorMessage = error.message;
-    alert("Sign In Error: " + errorMessage + ". Please try again.")
   });
-}
   
   // ---------------- Keep User Logged In ----------------------------------//
   
@@ -186,12 +182,12 @@ existingLogin = (email, password) => {
   
     if (!keepLoggedIn) {
       sessionStorage.setItem("user", JSON.stringify(user));
+      window.location = "index.html";
     } 
     
     else {
       localStorage.setItem("keepLoggedInSwitch", "yes");
       localStorage.setItem("user", JSON.stringify(user));
+      window.location = "index.html";
     }
-
-    window.location.href = "index.html";
   }
