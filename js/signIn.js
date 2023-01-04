@@ -135,6 +135,7 @@ existingLogin = (email, password) => {
   .then((userCredential) => {
     // Signed in
     const user = userCredential.user;
+    print(user)
 
     // Log sign-in date
     let logDate = new Date();
