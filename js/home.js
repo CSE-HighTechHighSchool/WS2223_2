@@ -72,3 +72,4 @@ function signOutUser() {
     // An error happened.
     console.log(error);
 })}
+
