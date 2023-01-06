@@ -95,11 +95,7 @@ nbBackground.observe(background);
 /* Changes button state based off of card button classList **/
 
 const cardOnClick = (element) => {
-    if (element.classList.contains("card-button-clicked")) {
-        element.classList.remove("card-button-clicked")
-    } else {
-        element.classList.add("card-button-clicked")
-    }
+    element.classList.toggle("card-button-clicked")
 }
 
 /* 
@@ -143,3 +139,16 @@ const zoomingOut = new IntersectionObserver(
 zoomOut.forEach(zoom => {
     zoomingOut.observe(zoom)
 })
+
+/*
+    These are scroll animations for the order page. There is a button in each section that takes the user to the next section. The function below takes the navbar height into account, and scrolls the user down the correct amount.
+*/
+
+const scrollDown = (element) => {
+    let nbHeight = document.querySelector(".nb-stuff").offsetHeight
+    let scrollHeight = element.offsetTop - nbHeight
+    window.scrollTo({
+        top: scrollHeight,
+        behavior: 'smooth'
+    })
+}

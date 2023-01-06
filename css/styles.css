@@ -443,6 +443,11 @@ h1.menu-title {
     color: #4d3f2d;
 }
 
+.brown-text:hover {
+    color: #4d3f2d;
+    text-decoration: none;
+}
+
 /* Special; used for navbar animation */
 .dark-brown-col {
     animation: fill-in ease-out 250ms;

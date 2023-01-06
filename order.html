@@ -131,8 +131,8 @@
                 data-bs-parent="#accordionExample">
                 <div class="accordion-body">
                   <div class="card-body text-center">
-                    <label for="lobster_bisque">Number of Items: </label>
-                    <input type="number" id="lobster_bisque" name="lobster_bisque" min="1" max="20">
+                    <label for="lobster_bisque">Quantity: </label>
+                    <input type="number" value=0 id="lobster_bisque" name="lobster_bisque" min="0" max="20">
                   </div>
                 </div>
               </div>
@@ -155,8 +155,8 @@
                 data-bs-parent="#accordionExample">
                 <div class="accordion-body">
                   <div class="card-body text-center">
-                    <label for="lettuce_wraps">Number of Items: </label>
-                    <input type="number" id="lettuce_wraps" name="lettuce_wraps" min="1" max="20">
+                    <label for="lettuce_wraps">Quantity: </label>
+                    <input type="number" value=0 id="lettuce_wraps" name="lettuce_wraps" min="0" max="20">
                   </div>
                 </div>
               </div>
@@ -180,8 +180,8 @@
                 data-bs-parent="#accordionExample">
                 <div class="accordion-body">
                   <div class="card-body text-center">
-                    <label for="poutine">Number of Items: </label>
-                    <input type="number" id="poutine" name="poutine" min="1" max="20">
+                    <label for="poutine">Quantity: </label>
+                    <input type="number" value=0 id="poutine" name="poutine" min="0" max="20">
                   </div>
                 </div>
               </div>
@@ -205,8 +205,8 @@
                 data-bs-parent="#accordionExample">
                 <div class="accordion-body">
                   <div class="card-body text-center">
-                    <label for="asparagus">Number of Items: </label>
-                    <input type="number" id="asparagus" name="asparagus" min="1" max="20">
+                    <label for="asparagus">Quantity: </label>
+                    <input type="number" value=0 id="asparagus" name="asparagus" min="0" max="20">
                   </div>
                 </div>
               </div>
@@ -229,8 +229,8 @@
                 data-bs-parent="#accordionExample">
                 <div class="accordion-body">
                   <div class="card-body text-center">
-                    <label for="salad">Number of Items: </label>
-                    <input type="number" id="salad" name="salad" min="1" max="20">
+                    <label for="salad">Quantity: </label>
+                    <input type="number" value=0 id="salad" name="salad" min="0" max="20">
                   </div>
                 </div>
               </div>
@@ -239,6 +239,12 @@
         </div>
 
 
+      </div>
+
+      <div class="container position-relative mt-5 pt-5 mx-auto">
+        <a class="icon-pos icon-anim brown-text" onclick='scrollDown(document.getElementById("entrees"))'>
+          <i class="bi bi-arrow-down-circle-fill h2"></i>
+        </a>
       </div>
 
     </section>
@@ -265,8 +271,8 @@
                 data-bs-parent="#accordionExample">
                 <div class="accordion-body">
                   <div class="card-body text-center">
-                    <label for="burrito">Number of Items: </label>
-                    <input type="number" id="burrito" name="burrito" min="1" max="20">
+                    <label for="burrito">Quantity: </label>
+                    <input type="number" value=0 id="burrito" name="burrito" min="0" max="20">
                   </div>
                 </div>
               </div>
@@ -288,8 +294,8 @@
                 data-bs-parent="#accordionExample">
                 <div class="accordion-body">
                   <div class="card-body text-center">
-                    <label for="paella">Number of Items: </label>
-                    <input type="number" id="paella" name="paella" min="1" max="20">
+                    <label for="paella">Quantity: </label>
+                    <input type="number" value=0 id="paella" name="paella" min="0" max="20">
                   </div>
                 </div>
               </div>
@@ -313,8 +319,8 @@
                 data-bs-parent="#accordionExample">
                 <div class="accordion-body">
                   <div class="card-body text-center">
-                    <label for="fried_rice">Number of Items: </label>
-                    <input type="number" id="fried_rice" name="fried_rice" min="1" max="20">
+                    <label for="fried_rice">Quantity: </label>
+                    <input type="number" value=0 id="fried_rice" name="fried_rice" min="0" max="20">
                   </div>
                 </div>
               </div>
@@ -339,8 +345,8 @@
                 data-bs-parent="#accordionExample">
                 <div class="accordion-body">
                   <div class="card-body text-center">
-                    <label for="asparagus">Number of Items: </label>
-                    <input type="number" id="asparagus" name="asparagus" min="1" max="20">
+                    <label for="asparagus">Quantity: </label>
+                    <input type="number" value=0 id="asparagus" name="asparagus" min="0" max="20">
                   </div>
                 </div>
               </div>
@@ -363,13 +369,19 @@
                 data-bs-parent="#accordionExample">
                 <div class="accordion-body">
                   <div class="card-body text-center">
-                    <label for="ramen">Number of Items: </label>
-                    <input type="number" id="ramen" name="ramen" min="1" max="20">
+                    <label for="ramen">Quantity: </label>
+                    <input type="number" value=0 id="ramen" name="ramen" min="0" max="20">
                   </div>
                 </div>
               </div>
             </div>
           </div>
+        </div>
+
+        <div class="container position-relative mt-5 pt-5 mx-auto">
+          <a class="icon-pos icon-anim text-light" onclick='scrollDown(document.getElementById("desserts"))'>
+            <i class="bi bi-arrow-down-circle-fill h2"></i>
+          </a>
         </div>
 
 
@@ -399,8 +411,8 @@
                 data-bs-parent="#accordionExample">
                 <div class="accordion-body">
                   <div class="card-body text-center">
-                    <label for="baklava_brownies">Number of Items: </label>
-                    <input type="number" id="baklava_brownies" name="baklava_brownies" min="1" max="20">
+                    <label for="baklava_brownies">Quantity: </label>
+                    <input type="number" value=0 id="baklava_brownies" name="baklava_brownies" min="0" max="20">
                   </div>
                 </div>
               </div>
@@ -424,8 +436,8 @@
                 data-bs-parent="#accordionExample">
                 <div class="accordion-body">
                   <div class="card-body text-center">
-                    <label for="mango_sticky_rice">Number of Items: </label>
-                    <input type="number" id="mango_sticky_rice" name="mango_sticky_rice" min="1" max="20">
+                    <label for="mango_sticky_rice">Quantity: </label>
+                    <input type="number" value=0 id="mango_sticky_rice" name="mango_sticky_rice" min="0" max="20">
                   </div>
                 </div>
               </div>
@@ -449,13 +461,19 @@
                 data-bs-parent="#accordionExample">
                 <div class="accordion-body">
                   <div class="card-body text-center">
-                    <label for="cookies_and_cream_rasmalai">Number of Items: </label>
-                    <input type="number" id="cookies_and_cream_rasmalai" name="cookies_and_cream_rasmalai" min="1" max="20">
+                    <label for="cookies_and_cream_rasmalai">Quantity: </label>
+                    <input type="number" value=0 id="cookies_and_cream_rasmalai" name="cookies_and_cream_rasmalai" min="0" max="20">
                   </div>
                 </div>
               </div>
             </div>
           </div>
+        </div>
+
+        <div class="container position-relative mt-5 pt-5 mx-auto">
+          <a  class="icon-pos icon-anim text-light" onclick='scrollDown(document.getElementById("drinks"))'>
+            <i class="bi bi-arrow-down-circle-fill h2"></i>
+          </a>
         </div>
 
 
@@ -487,8 +505,8 @@
                 data-bs-parent="#accordionExample">
                 <div class="accordion-body">
                   <div class="card-body text-center">
-                    <label for="coconut_milk_hot_chocolate">Number of Items: </label>
-                    <input type="number" id="coconut_milk_hot_chocolate" name="coconut_milk_hot_chocolate" min="1" max="20">
+                    <label for="coconut_milk_hot_chocolate">Quantity: </label>
+                    <input type="number" value=0 id="coconut_milk_hot_chocolate" name="coconut_milk_hot_chocolate" min="0" max="20">
                   </div>
                 </div>
               </div>
@@ -512,8 +530,8 @@
                 data-bs-parent="#accordionExample">
                 <div class="accordion-body">
                   <div class="card-body text-center">
-                    <label for="chai_tea_pina_colada">Number of Items: </label>
-                    <input type="number" id="chai_tea_pina_colada" name="chai_tea_pina_colada" min="1" max="20">
+                    <label for="chai_tea_pina_colada">Quantity: </label>
+                    <input type="number" value=0 id="chai_tea_pina_colada" name="chai_tea_pina_colada" min="0" max="20">
                   </div>
                 </div>
               </div>
@@ -537,13 +555,19 @@
                 data-bs-parent="#accordionExample">
                 <div class="accordion-body">
                   <div class="card-body text-center">
-                    <label for="peach_mango_blueberry_lemon_soda">Number of Items: </label>
-                    <input type="number" id="peach_mango_blueberry_lemon_soda" name="peach_mango_blueberry_lemon_soda" min="1" max="20">
+                    <label for="peach_mango_blueberry_lemon_soda">Quantity: </label>
+                    <input type="number" value=0 id="peach_mango_blueberry_lemon_soda" name="peach_mango_blueberry_lemon_soda" min="0" max="20">
                   </div>
                 </div>
               </div>
             </div>
           </div>
+        </div>
+
+        <div class="container position-relative mt-5 pt-5 mx-auto">
+          <a class="icon-pos icon-anim brown-text" onclick='scrollDown(document.getElementById("order_info"))'>
+            <i class="bi bi-arrow-down-circle-fill h2"></i>
+          </a>
         </div>
 
 
