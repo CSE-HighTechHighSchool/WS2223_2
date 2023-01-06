@@ -35,11 +35,7 @@
 
 // ---------------------// Get reference values -----------------------------
 
-let userLink = document.getElementById("userLink");
-let signOut = document.getElementById("signOut");
-let welcome = document.getElementById("welcome");
-let signedIn = document.getElementById("signedIn");
-let empty = document.getElementById("empty");
+let signOutLink = document.getElementById("signOut");
 let currentUser = null;
 
 // ----------------------- Get User's Name'Name ------------------------------
@@ -65,7 +61,7 @@ function signOutUser() {
   localStorage.removeItem("user");
   sessionStorage.removeItem("user");
   // Sign-out from FRD
-  signOut(auth).then(() => {
+  auth.signOut().then(() => {
     // Sign-out successful.
     window.location.href = "index.html";
   }).catch((error) => {
@@ -73,3 +69,45 @@ function signOutUser() {
     console.log(error);
 })}
 
+window.onload = function () {
+  getUsername();
+
+  if (currentUser == null) {
+
+    signOutLink.innerText = "Sign In";
+    signOutLink.href = "signIn.html";
+    signOutLink.classList.add("strong")
+  } else {
+    console.log(currentUser);
+
+    signOutLink.innerText = "Sign Out";
+    signOutLink.classList.add("strong")
+    signOutLink.addEventListener("click", (e) => {
+      e.preventDefault();
+      signOutUser();
+    });
+    
+    let adminLink = document.createElement("a");
+    adminLink.setAttribute("id", "adminLink");
+    adminLink.classList.add("nav-link");
+    adminLink.classList.add("hover-underline-animation");
+    adminLink.classList.add("strong")
+
+    let end = document.getElementById("end");
+
+    end.appendChild(adminLink);
+    
+
+    if (currentUser.isAdmin) {
+      adminLink.setAttribute("href", "admin.html");
+      adminLink.innerText = "Admin Console";
+    } else {
+      adminLink.innerText = "My Account"
+      adminLink.setAttribute("href", "myacc.html")
+    }
+    console.log(window.location.href)
+    if (window.location.href.match("admin.html") != null) {
+      adminLink.classList.add("active");
+    }
+  }
+};

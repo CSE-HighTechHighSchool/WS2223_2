@@ -21,6 +21,8 @@
   <link href="https://fonts.googleapis.com/css2?family=Livvic&family=Montserrat&family=Open+Sans&display=swap"
     rel="stylesheet">
 
+  <script src="js/home.js" type="module" defer></script>
+
 </head>
 
 <body>
@@ -59,7 +61,10 @@
             <a class="nav-link hover-underline-animation active" href="order.html"><strong>Order Here</strong></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link hover-underline-animation" href="signIn.html"><strong>Sign In</strong></a>
+            <a id="signOut" class="nav-link hover-underline-animation" href="signIn.html"><strong>Sign In</strong></a>
+          </li>
+          <li id="end" class="nav_item">
+
           </li>
         </ul>
 
@@ -99,10 +104,38 @@
   Stay tuned!
 -->
 
-  <section class="text-dark p-4 text-center beige-col">
+  <!--<section class="text-dark p-4 text-center beige-col">
     <h5 class="position-relative fades" style="font-size: max(calc(2.5vw - 20px), 20px);">This functionality is coming
       soon. Stay tuned! In the meantime, you can call our number to place orders.</em><br></h5>
+  </section>-->
+  <form>
+  <section class="brown-text p-4 text-center beige-col">
+    <section id="appetizers" class="pb-3">
+    <br>
+    <h1 class="position-relative fades">Appetizers</h1>
+    <hr class="w-25 m-auto" style="border-width: 5px">
+    </section>
+
+    <section id="entrees" class="pb-3">
+      <br>
+      <h1 class="position-relative fades">Entrees</h1>
+      <hr class="w-25 m-auto" style="border-width: 5px">
+    </section>
+
+    <section id="desserts" class="pb-3">
+      <br>
+      <h1 class="position-relative fades">Desserts</h1>
+      <hr class="w-25 m-auto" style="border-width: 5px">
+    </section>
+
+    <section id="drinks" class="pb-3">
+      <br>
+      <h1 class="position-relative fades">Drinks</h1>
+      <hr class="w-25 m-auto" style="border-width: 5px">
+    </section>
+
   </section>
+</form>
 
   <!--
   Footer with modals and links
