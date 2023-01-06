@@ -87,9 +87,6 @@ document.getElementById('submitData').addEventListener("click", (e) => {
   // ---------------------- Validate Registration Da  ta -----------------------//
   
   function validation(firstName, lastName, email, password) {
-    let fNameRegex = /^[a-zA-Z]+$/;
-    let lNameRegex = /^[a-zA-Z]+$/;
-    let emailRegex = /^([a-zA-Z0-9]+)@ctemc\.org$/;
     let fNameRegex = /^[a-zA-Z'!]+$/;
     let lNameRegex = /^[a-zA-Z\s'!]+$/;
     let emailRegex = /^([a-zA-Z0-9_-.]+)@((gmail.com)|(yahoo.com)|(outlook.com)|(hotmail.com))$/;
