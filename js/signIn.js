@@ -37,7 +37,7 @@ document.getElementById('submitData').addEventListener("click", (e) => {
     const name = document.getElementById('name').value; 
     const nameArr = name.split(" ");
     const firstName = nameArr[0];
-    const lastName = nameArr[1];
+    const lastName = nameArr.slice(1).join(' ');
     const email = document.getElementById('userEmail').value;
   
     // Firebase will require a password of at least 6 characters
@@ -84,19 +84,19 @@ document.getElementById('submitData').addEventListener("click", (e) => {
     return str === null || str.match(/^ *$/) !== null
   }
   
-  // ---------------------- Validate Registration Data -----------------------//
+  // ---------------------- Validate Registration Da  ta -----------------------//
   
   function validation(firstName, lastName, email, password) {
-    let fNameRegex = /^[a-zA-Z]+$/;
-    let lNameRegex = /^[a-zA-Z]+$/;
-    let emailRegex = /^([a-zA-Z0-9]+)@ctemc\.org$/;
+    let fNameRegex = /^[a-zA-Z'!]+$/;
+    let lNameRegex = /^[a-zA-Z\s'!]+$/;
+    let emailRegex = /^([a-zA-Z0-9_-.]+)@((gmail.com)|(yahoo.com)|(outlook.com)|(hotmail.com))$/;
     let passRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{6,}$/;
   
     if (isEmptyorSpaces(firstName) || isEmptyorSpaces(lastName) || isEmptyorSpaces(email) || isEmptyorSpaces(password)) {
       alert("Please complete all fields.");
       return false;
     } else if (!firstName.match(fNameRegex) || !lastName.match(lNameRegex) || !email.match(emailRegex) || !password.match(passRegex)) {
-      alert("Check your data and try again. First name is only capital and lowercase letters. Last name is only capital and lowercase letters. Email must be a valid CTEMC email address. Password must be at least 6 characters and contain at least one uppercase letter, one lowercase letter, and one number.");
+      alert("Check your data and try again. First name is only capital and lowercase letters. Last name is only capital and lowercase letters. Email must be a valid gmail, yahoo, outlook, or hotmail address. Password must be at least 6 characters and contain at least one uppercase letter, one lowercase letter, and one number.");
       return false;
     }
   
