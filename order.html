@@ -114,11 +114,98 @@
     <br>
     <h1 class="position-relative fades">Appetizers</h1>
     <hr class="w-25 m-auto" style="border-width: 5px">
+    <div class="row" style="margin: 50px 0px">
+    <div class="position-relative col-12 col-md-4 col-lg-4 pb-3 fades">
+      
     
     <div class="order-flex">
-      
+      <div class="card border-1 staffcard">
+        <div class="accordion" id="accordionExample">
+          <div class="accordion-item">
+            <h2 class="menu-header" id="headingOne">
+              <div class="card-body">
+                <h4>Lobster Bisque - $7 <input
+                  class="form-check-input"
+                  type="checkbox"
+                  [ngModel]="checked[0]"
+                  (ngModelChange)="modelChanged(0, $event, acc)"
+                  id="check1"
+                  data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne"
+                />
+                <span class="badge yellow-col small">Gluten-Free</span>
+                </h4>
+              </div>
+            </h2>
+            <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+              <div class="accordion-body">
+                <div class="card-body text-center">
+                  <label for="lobster_bisque">Number of Items: </label>
+                  <input type="number" id="lobster_bisque" name="lobster_bisque" min="1" max="20">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        
+      </div>
+    </div>
     </div>
 
+    <!--
+    <div class="position-relative col-12 col-md-4 col-lg-4 pb-3 fades">
+      <div class="order-flex">
+        
+        <div class="card border-1 staffcard">
+          
+          <div class="card-body text-center">
+            <h4>Lettuce Wraps - $8 <span class="badge yellow-col small">Gluten-Free</span></h4>
+            <label for="lettuce_wraps">Number of Items: </label>
+            <input type="number" id="lettuce_wraps" name="lettuce_wraps" min="1" max="20">
+          </div>
+          
+        </div>  
+      </div>
+    </div>
+    <div class="position-relative col-12 col-md-4 col-lg-4 pb-3 fades">
+    <div class="order-flex">
+      <div class="card border-1 staffcard">
+        
+        <div class="card-body text-center">
+          <h4>Poutine - $8 <span class="badge yellow-col small">Gluten-Free</span><span
+            class="badge bg-secondary small">Ask for Veg</span></h4></h4>
+          <label for="poutine">Number of Items: </label>
+          <input type="number" id="poutine" name="poutine" min="1" max="20">
+        </div>
+      </div>
+    </div>
+    </div>
+    <div class="position-relative col-12 col-md-4 col-lg-4 pb-3 fades">
+      <div class="order-flex">
+        <div class="card border-1 staffcard">
+          
+          <div class="card-body text-center">
+            <h4>Asparagus - $7 <span class="badge yellow-col small">Gluten-Free</span></h4>
+            <label for="asparagus">Number of Items: </label>
+            <input type="number" id="asparagus" name="asparagus" min="1" max="20">
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="position-relative col-12 col-md-4 col-lg-4 pb-3 fades">
+      <div class="order-flex">
+        <div class="card border-1 staffcard">
+          
+          <div class="card-body text-center">
+            <h4>Salad - $6 <span class="badge yellow-col small">Gluten-Free</span><span
+              class="badge bg-success small">Vegan</span></h4></h4>
+            <label for="salad">Number of Items: </label>
+            <input type="number" id="salad" name="salad" min="1" max="20">
+          </div>
+        </div>
+      </div>
+    </div>
+    -->
     </section>
 
     <section id="entrees" class="orange-col text-light m-auto text-center pb-3">
@@ -144,6 +231,7 @@
       <h1 class="position-relative fades">Order Info</h1>
       <hr class="w-25 m-auto" style="border-width: 5px">
     </section>
+    
 </form>
 
   <!--

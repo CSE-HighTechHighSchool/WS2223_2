@@ -138,7 +138,12 @@ a:hover {
 .top-img-2 {
     min-height: 50vh !important;; 
 }
-
+.order-flex {
+    display: flex;
+    
+    justify-content: center;
+    flex-flow: row wrap;
+}
 .carousel-img {
     background-size: cover;
     height: calc(100vh - 96px);
