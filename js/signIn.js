@@ -89,7 +89,7 @@ document.getElementById('submitData').addEventListener("click", (e) => {
   function validation(firstName, lastName, email, password) {
     let fNameRegex = /^[a-zA-Z'!]+$/;
     let lNameRegex = /^[a-zA-Z\s'!]+$/;
-    let emailRegex = /^([a-zA-Z0-9_-.]+)@((gmail.com)|(yahoo.com)|(outlook.com)|(hotmail.com))$/;
+    let emailRegex = /^([a-zA-Z0-9_\\-\\.]+)@((gmail.com)|(yahoo.com)|(outlook.com)|(hotmail.com))$/;
     let passRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{6,}$/;
   
     if (isEmptyorSpaces(firstName) || isEmptyorSpaces(lastName) || isEmptyorSpaces(email) || isEmptyorSpaces(password)) {
