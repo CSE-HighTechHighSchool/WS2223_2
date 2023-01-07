@@ -580,6 +580,50 @@
       <br>
       <h1 class="position-relative fades">Order Info</h1>
       <hr class="w-25 m-auto" style="border-width: 5px">
+
+      <!--ask user for email address, billing info, and name of person ordering-->
+      <!--ask whether pickup or delivery-->
+      <!--if delivery, ask for address-->
+      <!--have price subtotal float in side, stick at the end-->
+
+      <div class="container input">
+
+        <div>
+          <h2 class="menu-header pt-4 pb-2">Contact Information</h2>
+            <div class="form-floating mb-3">
+              <input type="email" class="form-control" id="email" name="email" placeholder="Email" required>
+              <label for="email">Email</label>
+            </div>
+            <div class="form-floating mb-3">
+              <input type="tel" class="form-control" id="phone" name="phone" placeholder="Phone Number">
+              <label for="phone">Phone Number</label>
+            </div>
+            <div class="form-floating mb-3">
+              <input type="text" class="form-control" id="name" name="name" placeholder="Name" required>
+              <label for="name">Name</label>
+            </div>
+        </div>
+
+        <div>
+          <h2 class="menu-header pt-4 pb-2">Billing Information</h2>
+            <div class="form-floating mb-3">
+              <input type="text" name="card" id="card" placeholder="Your card number" class="form-control" required>
+              <label for="card">Card Number</label>
+            </div>
+            <div class="form-floating mb-3">
+              <input type="text" class="form-control" id="exp" name="exp" placeholder="Expiration" required>
+              <label for="exp">Expiration</label>
+            </div>
+            <div class="form-floating mb-3">
+              <input type="text" class="form-control" id="cvv" name="cvv" placeholder="CVV" maxlength=3 minlength=3 required>
+              <label for="cvv">CVV</label>
+            </div>
+        </div>
+
+
+      </div>
+
+
     </section>
 
   </form>

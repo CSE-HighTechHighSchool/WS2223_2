@@ -473,11 +473,21 @@ h1.menu-title {
     font-weight: 600;
 }
 
+.input {
+    width: max(200px, 80vw);
+
+}
 
 /* --- ID CSS --- */
 
 #border-right {
     border-right: 4px solid #4d3f2d;
+}
+
+#price {
+    position: absolute
+    bottom: 20px;
+    left: 50vw;
 }
 
 
