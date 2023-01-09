@@ -116,6 +116,8 @@ window.onload = function () {
     } else if (window.location.href.match("myacc.html") != null) {
       adminLink.classList.add("active");
       welcome_message.innerHTML = "Welcome, " + currentUser.firstName + ".";
+      //insert code here
+      
       end.classList.add("active");
     }
   }

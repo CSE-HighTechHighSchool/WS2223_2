@@ -1,37 +1,39 @@
+import { bootstrapAlert } from "./alert.js";
+
 // ----------------- Page Loaded After User Sign-in -------------------------//
 
 // ----------------- Firebase Setup & Initialization ------------------------//
 
-  // Import the functions you need from the SDKs you need
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-app.js";
-  import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-analytics.js";
-  // TODO: Add SDKs for Firebase products that you want to use
-  // https://firebase.google.com/docs/web/setup#available-libraries
+// Import the functions you need from the SDKs you need
+import { initializeApp } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-app.js";
+import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-analytics.js";
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
 
-  import {getAuth, signInWithEmailAndPassword} from "https://www.gstatic.com/firebasejs/9.15.0/firebase-auth.js";
-  import {getDatabase, ref, set, update, child, get, remove} from "https://www.gstatic.com/firebasejs/9.15.0/firebase-database.js";
+import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-auth.js";
+import { getDatabase, ref, set, update, child, get, remove } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-database.js";
 
-  // Your web app's Firebase configuration
-  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-  const firebaseConfig = {
-    apiKey: "AIzaSyCL58GYKI97YFdpJseNOnUmDpp4YPp1dCQ",
-    authDomain: "fusion-360-cuisine.firebaseapp.com",
-    projectId: "fusion-360-cuisine",
-    storageBucket: "fusion-360-cuisine.appspot.com",
-    messagingSenderId: "477691509900",
-    appId: "1:477691509900:web:5aa146a0ab8f38cd484fa9",
-    measurementId: "G-6MG2F9352K"
-  };
+// Your web app's Firebase configuration
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+const firebaseConfig = {
+  apiKey: "AIzaSyCL58GYKI97YFdpJseNOnUmDpp4YPp1dCQ",
+  authDomain: "fusion-360-cuisine.firebaseapp.com",
+  projectId: "fusion-360-cuisine",
+  storageBucket: "fusion-360-cuisine.appspot.com",
+  messagingSenderId: "477691509900",
+  appId: "1:477691509900:web:5aa146a0ab8f38cd484fa9",
+  measurementId: "G-6MG2F9352K"
+};
 
-  // Initialize Firebase
-  const app = initializeApp(firebaseConfig);
-  const analytics = getAnalytics(app);
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const analytics = getAnalytics(app);
 
-  // Initialize Auth
-  const auth = getAuth();
+// Initialize Auth
+const auth = getAuth();
 
-  // Initialize Database
-  const db = getDatabase(app);
+// Initialize Database
+const db = getDatabase(app);
 
 // ---------------------// Get reference values -----------------------------
 
@@ -56,172 +58,164 @@ function getUsername() {
 
 // All variables to get values of order form
 
-lobster_bisque = document.getElementById("lobster_bisque");
-lettuce_wraps = document.getElementById("lettuce_wraps");
-poutine = document.getElementById("poutine");
-asparagus = document.getElementById("asparagus");
-salad = document.getElementById("salad");
-burrito = document.getElementById("burrito");
-paella = document.getElementById("paella");
-fried_rice = document.getElementById("fried_rice");
-injera = document.getElementById("injera");
-ramen = document.getElementById("ramen");
-baklava_brownies = document.getElementById("baklava_brownies");
-mango_sticky_rice = document.getElementById("mango_sticky_rice");
-cookies_and_cream_rasmalai = document.getElementById("cookies_and_cream_rasmalai");
-coconut_milk_hot_chocolate = document.getElementById("coconut_milk_hot_chocolate");
-chai_tea_pina_colada = document.getElementById("chai_tea_pina_colada");
-peach_mango_blueberry_lemon_soda = document.getElementById("peach_mango_blueberry_lemon_soda");
-email = document.getElementById("email");
-phone = document.getElementById("phone");
-order_name = document.getElementById("name");
-apt_suite = document.getElementById("apt_suite");
-address = document.getElementById("address");
-town = document.getElementById("town");
-state = document.getElementById("state");
-zip = document.getElementById("zip");
-order_notes = document.getElementById("order_notes");
+let lobster_bisque = document.getElementById("lobster_bisque");
+let lettuce_wraps = document.getElementById("lettuce_wraps");
+let poutine = document.getElementById("poutine");
+let asparagus = document.getElementById("asparagus");
+let salad = document.getElementById("salad");
+let burrito = document.getElementById("burrito");
+let paella = document.getElementById("paella");
+let fried_rice = document.getElementById("fried_rice");
+let injera = document.getElementById("injera");
+let ramen = document.getElementById("ramen");
+let baklava_brownies = document.getElementById("baklava_brownies");
+let mango_sticky_rice = document.getElementById("mango_sticky_rice");
+let cookies_and_cream_rasmalai = document.getElementById("cookies_and_cream_rasmalai");
+let coconut_milk_hot_chocolate = document.getElementById("coconut_milk_hot_chocolate");
+let chai_tea_pina_colada = document.getElementById("chai_tea_pina_colada");
+let peach_mango_blueberry_lemon_soda = document.getElementById("peach_mango_blueberry_lemon_soda");
+let apt_suite = document.getElementById("apt_suite");
+let address = document.getElementById("address");
+let town = document.getElementById("town");
+let state = document.getElementById("state");
+let zip = document.getElementById("zip");
+let order_notes = document.getElementById("order_notes");
 
-order_form_items = [["lobster_bisque", lobster_bisque], ["lettuce_wraps", lettuce_wraps], ["poutine", poutine], ["asparagus", asparagus], ["salad", salad], ["burrito", burrito], ["paella", paella], ["fried_rice", fried_rice], ["injera", injera], ["ramen", ramen], ["baklava_brownies", baklava_brownies], ["mango_sticky_rice", mango_sticky_rice], ["cookies_and_cream_rasmalai", cookies_and_cream_rasmalai], ["coconut_milk_hot_chocolate", coconut_milk_hot_chocolate], ["chai_tea_pina_colada", chai_tea_pina_colada], ["peach_mango_blueberry_lemon_soda", peach_mango_blueberry_lemon_soda], ["email", email], ["phone", phone], ["order_name", order_name], ["apt_suite", apt_suite], ["address", address], ["town", town], ["state", state], ["zip", zip], ["order_notes", order_notes]];
+let order_form_items = [["lobster_bisque", lobster_bisque], ["lettuce_wraps", lettuce_wraps], ["poutine", poutine], ["asparagus", asparagus], ["salad", salad], ["burrito", burrito], ["paella", paella], ["fried_rice", fried_rice], ["injera", injera], ["ramen", ramen], ["baklava_brownies", baklava_brownies], ["mango_sticky_rice", mango_sticky_rice], ["cookies_and_cream_rasmalai", cookies_and_cream_rasmalai], ["coconut_milk_hot_chocolate", coconut_milk_hot_chocolate], ["chai_tea_pina_colada", chai_tea_pina_colada], ["peach_mango_blueberry_lemon_soda", peach_mango_blueberry_lemon_soda]];
 
-food_categories = {
-  "Appetizers": ["lobster_bisque", "lettuce_wraps", "poutine", "asparagus", "salad"],
-  "Entrees": ["burrito", "paella", "fried_rice", "injera", "ramen"],
-  "Desserts": ["baklava_brownies", "mango_sticky_rice", "cookies_and_cream_rasmalai"],
-  "Drinks": ["coconut_milk_hot_chocolate", "chai_tea_pina_colada", "peach_mango_blueberry_lemon_soda"]
+let food_categories = {
+  "appetizers": ["lobster_bisque", "lettuce_wraps", "poutine", "asparagus", "salad"],
+  "entrees": ["burrito", "paella", "fried_rice", "injera", "ramen"],
+  "desserts": ["baklava_brownies", "mango_sticky_rice", "cookies_and_cream_rasmalai"],
+  "drinks": ["coconut_milk_hot_chocolate", "chai_tea_pina_colada", "peach_mango_blueberry_lemon_soda"]
 }
 
 // Detect when order form submit button is clicked and do this whole process with it
 
 let orderSubmission = document.getElementById("order-form");
-orderSubmission.addEventListener("submit", (e) => {
+orderSubmission.addEventListener("click", (e) => {
   e.preventDefault();
-  
+  getUsername();
+
+  console.log("this worked")
+
+  defineOrder(new Date().toLocaleString(), order_notes.value, false, currentUser.uid, apt_suite.value, address.value, town.value, state.value, zip.value);
+
+  console.log("this worked too");
+
+  let totalCost = 0
+
+  for (let i = 0; i < order_form_items.length; i++) {
+    addItem(order_form_items[i][0], order_form_items[i][1].value, currentUser.uid).then(
+      (cost) => {
+        totalCost += cost
+        console.log(totalCost)
+        update(ref(db, `orders/${currentUser.uid}/price`), {
+          price: totalCost
+        });
+      }
+    );
+  }
+
+  console.log("this worked too");
+
 });
 
 
 
 // Set Data
 
-function defineOrder(date, phonenumber, emailaddress, ordernotes, fulfillmentstatus, userID){
-  set(ref(db, `orders/${userID}`), {
+function defineOrder(date, ordernotes, fulfillmentstatus, userID, apt_suite, address, town, state, zip) {
+  set(ref(db, `orders/${userID}/date`), {
     date: date,
-    
+  })
+    .then(() => { })
+    .catch((error) => {
+      bootstrapAlert(`Error: ${error.code} - ${error.message}`, 'danger');
+    });
+
+  set(ref(db, `orders/${userID}/contact_info`), {
+    email_address: currentUser.email
+  })
+    .then(() => { })
+    .catch((error) => {
+      bootstrapAlert(`Error: ${error.code} - ${error.message}`, 'danger');
+    });
+
+  set(ref(db, `orders/${userID}/order_notes`), {
+    text: ordernotes,
+
+  })
+    .then(() => { })
+    .catch((error) => {
+      bootstrapAlert(`Error: ${error.code} - ${error.message}`, 'danger');
+    });
+
+  set(ref(db, `orders/${userID}/fulfillment_status`), {
+    fulfilled: fulfillmentstatus,
+
+  })
+    .then(() => { })
+    .catch((error) => {
+      bootstrapAlert(`Error: ${error.code} - ${error.message}`, 'danger');
+    });
+
+  set(ref(db, `orders/${userID}/address`), {
+    address: address,
+    apt_suite: apt_suite,
+    town: town,
+    state: state,
+    zip: zip
   })
     .then(() => {
-      
+      bootstrapAlert(`Your order was sent successfully`, 'success');
     })
     .catch((error) => {
-      alert(`Error: ${error.code} - ${error.message}`);
-    });
-  
-    set(ref(db, `orders/${userID}/contactinfo`), {
-      phone_number: phonenumber,
-      email_address: emailaddress,
-    })
-    .then(() => {
-        
-    })
-    .catch((error) => {
-        alert(`Error: ${error.code} - ${error.message}`);
-    });
-
-    set(ref(db, `orders/${userID}/ordernotes`), {
-      text: ordernotes,
-      
-    })
-    .then(() => {
-        
-    })
-    .catch((error) => {
-        alert(`Error: ${error.code} - ${error.message}`);
-    });
-
-    set(ref(db, `orders/${userID}/ordernotes`), {
-      text: ordernotes,
-      
-    })
-    .then(() => {
-        
-    })
-    .catch((error) => {
-        alert(`Error: ${error.code} - ${error.message}`);
-    });
-
-    set(ref(db, `orders/${userID}/fulfillmentstatus`), {
-      fulfilled: fulfillmentstatus,
-      
-    })
-    .then(() => {
-        
-    })
-    .catch((error) => {
-        alert(`Error: ${error.code} - ${error.message}`);
-    });
-
-    set(ref(db, `orders/${userID}/price`), {
-      price: 0,
-      
-    })
-    .then(() => {
-      alert(`Your order was sent successfully`);
-        
-    })
-    .catch((error) => {
-        alert(`Error: ${error.code} - ${error.message}`);
+      bootstrapAlert(`Error: ${error.code} - ${error.message}`, 'danger');
     });
 };
 
-function addItem(item, quantity, itemPrice, userID){
-  if (quantity > 0){
-  set(ref(db, `orders/${userID}/itemsOrdered`), {
-    [item]: quantity,
-    
-  })
-  .then(() => {
-      
-  })
-  .catch((error) => {
-      alert(`Error: ${error.code} - ${error.message}`);
-  });
+async function addItem(item, quantity, userID) {
+  if (quantity > 0) {
+    await update(ref(db, `orders/${userID}/items_ordered`), {
+      [item]: quantity,
+    })
+      .catch((error) => {
+        bootstrapAlert(`Error: ${error.code} - ${error.message}`, 'danger');
+      });
 
-  get(ref(db, `prices/${userID}/price`))
+    let actual_cat = "";
 
-  }
+    let food_cats = Object.keys(food_categories);
 
+    for (let i = 0; i < food_cats.length; i++) {
+      if (food_categories[food_cats[i]].includes(item)) {
+        actual_cat = food_cats[i];
+      }
+    }
+    console.log(actual_cat)
 
+    let itemPrice = 0;
 
-  let currentPrice=0;
+    await get(ref(db, `prices/${actual_cat}`)).then((snapshot) => {
 
-  get(child(db, `orders/${userID}/price`))
-    .then((snapshot) => {
       if (snapshot.exists()) {
         snapshot.forEach(child => {
-            currentPrice = child.val();
+          if (child.key == item) {
+            itemPrice = child.val();
+          }
         });
-        
-
-      } else {
-        alert("No data available");
       }
-      
-    })
-    .catch((error) => {
-      alert(`Error: ${error.code} - ${error.message}`);
+    }).then(() => {
+      console.log("item price = " + itemPrice)
+
+    }).catch((error) => {
+        bootstrapAlert(`Error: ${error.code} - ${error.message}`, 'danger');
     });
 
-    let newCost = currentPrice + quantity*itemPrice;
-  
+    return itemPrice * quantity;
 
-
-
-    update(ref(db, `orders/${userID}/price`), {
-      price: newCost,
-    })
-      .then(() => {
-        alert("Data updated successfully");
-      })
-      .catch((error) => {
-        alert(`Error: ${error.code} - ${error.message}`);
-      });
+  } else {
+    return 0;
+  }
 };
