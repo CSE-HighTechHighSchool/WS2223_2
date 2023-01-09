@@ -36,6 +36,7 @@
 // ---------------------// Get reference values -----------------------------
 
 let signOutLink = document.getElementById("signOut");
+let welcome_message = document.getElementById("welcome-message");
 let currentUser = null;
 
 // ----------------------- Get User's Name'Name ------------------------------
@@ -108,6 +109,10 @@ window.onload = function () {
     console.log(window.location.href)
     if (window.location.href.match("admin.html") != null) {
       adminLink.classList.add("active");
+    } else if (window.location.href.match("myacc.html") != null) {
+      adminLink.classList.add("active");
+      welcome_message.innerHTML = "Welcome, " + currentUser.firstName + ".";
+      end.classList.add("active");
     }
   }
 };

@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ l<!DOCTYPE html>
 <html lang="en">
 
 <!--
@@ -22,6 +22,7 @@
     rel="stylesheet">
 
   <script src="js/home.js" type="module" defer></script>
+  <script src="js/order.js" type="module" defer></script>
 
 </head>
 
@@ -109,7 +110,7 @@
       soon. Stay tuned! In the meantime, you can call our number to place orders.</em><br></h5>
   </section>-->
 
-  <form>
+  <form id="order">
     <section id="appetizers" class="beige-col brown-text m-auto text-center pb-3">
       <br>
       <h1 class="position-relative fades">Appetizers</h1>
@@ -347,7 +348,7 @@
                 <div class="accordion-body">
                   <div class="card-body text-center">
                     <label for="asparagus">Quantity: </label>
-                    <input type="number" value=0 id="asparagus" name="asparagus" min="0" max="20">
+                    <input type="number" value=0 id="injera" name="injera" min="0" max="20">
                   </div>
                 </div>
               </div>
@@ -605,19 +606,58 @@
         </div>
 
         <div>
-          <h2 class="menu-header pt-4 pb-2">Billing Information</h2>
-            <div class="form-floating mb-3">
-              <input type="text" name="card" id="card" placeholder="Your card number" class="form-control" required>
-              <label for="card">Card Number</label>
+          <h2 class="menu-header pt-4 pb-2">Order Type</h2>
+          <ul class="nav nav-pills mb-3 justify-content-center" id="pills-tab" role="tablist">
+            <li class="nav-item" role="presentation">
+              <button class="nav-link border-round active" id="pickup" data-bs-toggle="pill" data-bs-target="#pickup-tab" type="button" role="tab" aria-controls="pickup-tab" aria-selected="true">Pickup</button>
+            </li>
+            <li class="nav-item" role="presentation">
+              <button class="nav-link" id="delivery" data-bs-toggle="pill" data-bs-target="#delivery-tab" type="button" role="tab" aria-controls="delivery-tab" aria-selected="false">Delivery</button>
+            </li>
+          </ul>
+          <div class="tab-content" id="pills-tabContent">
+            <div class="tab-pane fade show active" id="pickup-tab" role="tabpanel" aria-labelledby="pickup">
             </div>
-            <div class="form-floating mb-3">
-              <input type="text" class="form-control" id="exp" name="exp" placeholder="Expiration" required>
-              <label for="exp">Expiration</label>
+            <div class="tab-pane fade" id="delivery-tab" role="tabpanel" aria-labelledby="delivery">
+              <div class="form-floating mb-3">
+                <input type="number" class="form-control" id="apt-suite" name="apt-suite" placeholder="Apartment/Suite #">
+                <label for="apt-suite">Apartment/Suite #</label>
+              </div>
+              <div class="form-floating mb-3">
+                <input type="text" class="form-control" id="address" name="address" placeholder="Address" value="42 Parnassus Ave">
+                <label for="address">Address</label>
+              </div>
+              <div class="form-floating mb-3">
+                <input type="text" class="form-control" id="town" name="town" placeholder="Town" value="San Francisco">
+                <label for="town">Town</label>
+              </div>
+              <div class="form-floating mb-3">
+                <input type="text" class="form-control" id="state" name="state" placeholder="State" value="CA" maxlength="2">
+                <label for="state">State (abbr.)</label>
+              </div>
+              <div class="form-floating mb-3">
+                <input type="text" class="form-control" id="zip" name="zip" placeholder="Zip Code" value="94117">
+                <label for="zip">Zip Code</label>
+              </div>
             </div>
+          </div>
+
+          <div>
+            <h2 class="menu-header pt-4 pb-2">Order Notes</h2>
             <div class="form-floating mb-3">
-              <input type="text" class="form-control" id="cvv" name="cvv" placeholder="CVV" maxlength=3 minlength=3 required>
-              <label for="cvv">CVV</label>
+              <textarea class="form-control" placeholder="Leave a comment here" id="order_notes" name="order_notes" style="height: 100px"></textarea>
+              <label for="order_notes">Leave comments here (ex. vegetarian only)</label>
             </div>
+          </div>
+
+          <div>
+            <button type="submit" class="btn btn-warning btn-lg" id="order-form">Submit</button>
+          </div>
+
+          <div>
+            <h2 class="menu-header pt-4 pb-2">Pay at counter if picking up, pay delivery driver if opting for delivery.</h2>
+          </div>
+
         </div>
 
 
@@ -634,7 +674,7 @@
 
   <footer class="pt-4 pb-3 footer text-center position-relative bg-dark text-light">
     <div class="container">
-      <p class="lead">1 Rue Karl Marx, 18500 Foëcy, France<br>315-194-6020</p>
+      <p class="lead">42 Parnassus Ave, San Francisco, CA 94117<br>925-233-5075</p>
       <a target="_blank" href="https://www.instagram.com/fusion360cuisine/" class="position-static bottom-0 pt-5 px-2">
         <i class="bi bi-instagram h4"></i>
       </a>
