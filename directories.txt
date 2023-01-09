@@ -1,0 +1,36 @@
+orders
+---- counter; this will count the number of orders and then increment to assign a unique id
+-------- date
+------------ 
+-------- food items ordered
+------------ item: quantity
+------------ .
+------------ .
+------------ .
+------------ .
+-------- price
+------------ total price: total price
+-------- contact information
+------------ phone number: phone number
+------------ email address: email address
+-------- order notes
+------------ text: text
+-------- fulfillment status
+------------ fulfilled: true/false
+
+prices
+---- appetizers
+-------- item: price
+---- entrees
+-------- item: price
+---- desserts
+-------- item: price
+---- drinks
+-------- item: price
+---- combos
+-------- item: price
+
+sales
+---- days
+-------- day : total_sales
+
