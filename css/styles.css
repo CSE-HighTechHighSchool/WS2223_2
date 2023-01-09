@@ -91,7 +91,7 @@ a:hover {
 }
 
 .fade-down {
-    animation: fadeInAnimation ease 1s, moveDown ease-out 1s;
+    animation: fadeInAnimation ease 100ms, moveDown ease-out 100ms;
     animation-iteration-count: 1;
     animation-fill-mode: forwards;
 }
