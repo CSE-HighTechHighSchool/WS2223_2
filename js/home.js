@@ -1,6 +1,7 @@
 // ----------------- Page Loaded After User Sign-in -------------------------//
 
 // ----------------- Firebase Setup & Initialization ------------------------//
+  import { bootstrapAlert } from './alert.js';  
 
   // Import the functions you need from the SDKs you need
   import { initializeApp } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-app.js";
@@ -37,6 +38,7 @@
 
 let signOutLink = document.getElementById("signOut");
 let welcome_message = document.getElementById("welcome-message");
+let orderLink = document.getElementById("orderLink");
 let currentUser = null;
 
 // ----------------------- Get User's Name'Name ------------------------------
@@ -77,7 +79,9 @@ window.onload = function () {
 
     signOutLink.innerText = "Sign In";
     signOutLink.href = "signIn.html";
-    signOutLink.classList.add("strong")
+    signOutLink.classList.add("strong");
+    orderLink.remove();
+
   } else {
     console.log(currentUser);
 

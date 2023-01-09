@@ -1,3 +1,5 @@
+  import { bootstrapAlert } from './alert.js';  
+  
   // Import the functions you need from the SDKs you need
   import { initializeApp } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-app.js";
   import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-analytics.js";
@@ -64,16 +66,17 @@ document.getElementById('submitData').addEventListener("click", (e) => {
         password: encryptPass(password),
         isAdmin: false
       }).then(() => {
-      alert("User created successfully");
-      window.location.href = "index.html";
+        window.location.href = "index.html";
+        bootstrapAlert("User created successfully", "success");
       }).catch((error) => {
-        alert("Error creating user: " + error);
+        bootstrapAlert("Error creating user: " + error, "danger");
+        console.log(error)
       });
     })
     .catch((error) => {
       const errorCode = error.code;
       const errorMessage = error.message;
-      alert(errorMessage);
+      bootstrapAlert(errorMessage, "danger");
       // ..
     });
   
@@ -93,10 +96,10 @@ document.getElementById('submitData').addEventListener("click", (e) => {
     let passRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{6,}$/;
   
     if (isEmptyorSpaces(firstName) || isEmptyorSpaces(lastName) || isEmptyorSpaces(email) || isEmptyorSpaces(password)) {
-      alert("Please complete all fields.");
+      bootstrapAlert("Please complete all fields.", "danger");
       return false;
     } else if (!firstName.match(fNameRegex) || !lastName.match(lNameRegex) || !email.match(emailRegex) || !password.match(passRegex)) {
-      alert("Check your data and try again. First name is only capital and lowercase letters. Last name is only capital and lowercase letters. Email must be a valid gmail, yahoo, outlook, or hotmail address. Password must be at least 6 characters and contain at least one uppercase letter, one lowercase letter, and one number.");
+      bootstrapAlert("Check your data and try again. First name is only capital and lowercase letters. Last name is only capital and lowercase letters. Email must be a valid gmail, yahoo, outlook, or hotmail address. Password must be at least 6 characters and contain at least one uppercase letter, one lowercase letter, and one number.", "danger");
       return false;
     }
   
@@ -153,6 +156,7 @@ const existingLogin = (auth, email, password) => {
           } else {
             console.log("No data available");
           }
+          window.location.href = "index.html";
         }})
         .catch((error) => {
           console.error(error);
@@ -161,13 +165,13 @@ const existingLogin = (auth, email, password) => {
       .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
-        alert("Update Error " + errorMessage + ". Please try again.")
+        bootstrapAlert("Update Error " + errorMessage + ". Please try again.", "danger")
       });
     })
     .catch((error) => {
       const errorCode = error.code;
       const errorMessage = error.message;
-      alert("Sign In Error: " + errorMessage + ". Please try again.")
+      bootstrapAlert("Sign In Error: " + errorMessage + ". Please try again.", "danger")
     });
   };
   
@@ -182,12 +186,8 @@ const existingLogin = (auth, email, password) => {
   
     if (!keepLoggedIn) {
       sessionStorage.setItem("user", JSON.stringify(user));
-      window.location = "index.html";
-    } 
-    
-    else {
+    } else {
       localStorage.setItem("keepLoggedInSwitch", "yes");
       localStorage.setItem("user", JSON.stringify(user));
-      window.location = "index.html";
     }
   }

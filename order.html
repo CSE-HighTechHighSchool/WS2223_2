@@ -58,7 +58,7 @@
           <li class="nav-item">
             <a class="nav-link hover-underline-animation" href="about.html"><strong>About Us</strong></a>
           </li>
-          <li class="nav-item">
+          <li class="nav-item" id="orderLink">
             <a class="nav-link hover-underline-animation active" href="order.html"><strong>Order Here</strong></a>
           </li>
           <li class="nav-item">
@@ -74,6 +74,8 @@
     </div>
 
   </nav>
+
+  <div id="alert-container"></div>
 
   <!--
     Screen shown on load. Contains an image and a title.
@@ -620,8 +622,8 @@
             </div>
             <div class="tab-pane fade" id="delivery-tab" role="tabpanel" aria-labelledby="delivery">
               <div class="form-floating mb-3">
-                <input type="number" class="form-control" id="apt-suite" name="apt-suite" placeholder="Apartment/Suite #">
-                <label for="apt-suite">Apartment/Suite #</label>
+                <input type="number" class="form-control" id="apt_suite" name="apt_suite" placeholder="Apartment/Suite #">
+                <label for="apt_suite">Apartment/Suite #</label>
               </div>
               <div class="form-floating mb-3">
                 <input type="text" class="form-control" id="address" name="address" placeholder="Address" value="42 Parnassus Ave">
