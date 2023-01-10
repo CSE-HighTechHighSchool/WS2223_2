@@ -39,6 +39,7 @@
 let signOutLink = document.getElementById("signOut");
 let welcome_message = document.getElementById("welcome-message");
 let orderLink = document.getElementById("orderLink");
+let end = document.getElementById("end");
 let currentUser = null;
 
 // ----------------------- Get User's Name'Name ------------------------------
@@ -96,9 +97,7 @@ window.onload = function () {
     adminLink.setAttribute("id", "adminLink");
     adminLink.classList.add("nav-link");
     adminLink.classList.add("hover-underline-animation");
-    adminLink.classList.add("strong")
-
-    let end = document.getElementById("end");
+    adminLink.classList.add("strong");
 
     end.appendChild(adminLink);
     

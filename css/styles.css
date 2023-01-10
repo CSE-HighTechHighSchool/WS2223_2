@@ -497,6 +497,11 @@ h1.menu-title {
 
 }
 
+.shadow {
+    box-shadow: 10px 10px;
+}
+
+
 /* --- ID CSS --- */
 
 #border-right {
@@ -528,6 +533,26 @@ h1.menu-title {
     pointer-events: auto; 
 }
 
+#cost_counter {
+    position: fixed;
+    cursor: move;
+    bottom: 20px;
+    right: 20px;
+    width: max(15%, 150px);
+    height: 20%;
+    pointer-events: auto;
+}
+
+#cost_counter > div {
+    z-index: 1000;
+}
+
+#move_icon {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+
+}
 
 /* --- Underline Animation CSS --- */
 
