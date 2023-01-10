@@ -10,7 +10,7 @@ const fadeUp = new IntersectionObserver(
             entry.target.classList.toggle("fade-in", entry.isIntersecting)
             if (entry.isIntersecting) fadeUp.unobserve(entry.target)
         })
-    }, 
+    },
     {
         threshold: 0.5,
     }
@@ -33,7 +33,7 @@ const fadeRight = new IntersectionObserver(
             entry.target.classList.toggle("fade-right", entry.isIntersecting)
             if (entry.isIntersecting) fadeRight.unobserve(entry.target)
         })
-    }, 
+    },
     {
         threshold: 0.5,
     }
@@ -56,7 +56,7 @@ const fadeLeft = new IntersectionObserver(
             entry.target.classList.toggle("fade-left", entry.isIntersecting)
             if (entry.isIntersecting) fadeLeft.unobserve(entry.target)
         })
-    }, 
+    },
     {
         threshold: 0.5,
     }
@@ -83,11 +83,11 @@ const nbBackground = new IntersectionObserver(
                 nb.classList.add("post-anim-nb");
             }
         }
-	    // fully intersects with screen
-	    else {nb.classList.add("dark-brown-col"); nb.classList.add("post-anim-nb"); changeUps += 1;}
-    }, { 
-        threshold: [0,1] 
-    }
+        // fully intersects with screen
+        else { nb.classList.add("dark-brown-col"); nb.classList.add("post-anim-nb"); changeUps += 1; }
+    }, {
+    threshold: [0, 1]
+}
 )
 
 nbBackground.observe(background);
@@ -101,7 +101,7 @@ const cardOnClick = (element) => {
 /* 
     Zoom animations. The first zooms in, the second zooms out.
 */
-  
+
 const zoomIn = document.querySelectorAll(".zoom-in")
 
 const zoomingIn = new IntersectionObserver(
@@ -110,7 +110,7 @@ const zoomingIn = new IntersectionObserver(
             entry.target.classList.toggle("zoom-in-anim", entry.isIntersecting)
             if (entry.isIntersecting) zoomingIn.unobserve(entry.target)
         })
-    }, 
+    },
     {
         threshold: 0.1,
     }
@@ -130,7 +130,7 @@ const zoomingOut = new IntersectionObserver(
             entry.target.classList.toggle("zoom-out-anim", entry.isIntersecting)
             if (entry.isIntersecting) zoomingOut.unobserve(entry.target)
         })
-    }, 
+    },
     {
         threshold: 0.1,
     }
@@ -152,6 +152,8 @@ const scrollDown = (element) => {
         behavior: 'smooth'
     })
 }
+
+if (window.location.href.match('order.html') != null) {
 
 /*
     This element tracks order cost as the user is in the process of ordering.
@@ -194,50 +196,51 @@ cost_button.addEventListener("click", () => {
     These functions allow the user to move the mini cost modal to any position.
 */
 
-let cost_counter = document.getElementById("cost_counter");
+    let cost_counter = document.getElementById("cost_counter");
 
-cost_box.addEventListener("mousedown", mousedown, false);
+    cost_box.addEventListener("mousedown", mousedown, false);
 
-function mousedown(e) {
-    window.addEventListener("mousemove", mousemove, false);
-    window.addEventListener("mouseup", mouseup, false);
-}
+    function mousedown(e) {
+        window.addEventListener("mousemove", mousemove, false);
+        window.addEventListener("mouseup", mouseup, false);
+    }
 
-function mousemove(e) {
-    let x = e.clientX - 20;
-    if (x < 20) x = 20;
-    if (x > window.innerWidth - 40) x = window.innerWidth - 40;
-    let y = e.clientY - 20;
-    if (y < 110) y = 110;
-    if (y > window.innerHeight - 120) y = window.innerHeight - 120;
-    cost_counter.style.left = x + "px";
-    cost_counter.style.top = y + "px";
-}
+    function mousemove(e) {
+        let x = e.clientX - 20;
+        if (x < 20) x = 20;
+        if (x > window.innerWidth - 40) x = window.innerWidth - 40;
+        let y = e.clientY - 20;
+        if (y < 110) y = 110;
+        if (y > window.innerHeight - 120) y = window.innerHeight - 120;
+        cost_counter.style.left = x + "px";
+        cost_counter.style.top = y + "px";
+    }
 
-function mouseup() {
-    window.removeEventListener("mousemove", mousemove, false);
-    window.removeEventListener("mouseup", mouseup, false);
-}
+    function mouseup() {
+        window.removeEventListener("mousemove", mousemove, false);
+        window.removeEventListener("mouseup", mouseup, false);
+    }
 
-/* 
-    Same thing, but for touch users (mobile) 
-*/
+    /* 
+        Same thing, but for touch users (mobile) 
+    */
 
-cost_box.addEventListener("touchstart", touchstart, false);
+    cost_box.addEventListener("touchstart", touchstart, false);
 
-function touchstart(e) {
-    window.addEventListener("touchmove", touchmove, false);
-    window.addEventListener("touchend", touchend, false);
-}
+    function touchstart(e) {
+        window.addEventListener("touchmove", touchmove, false);
+        window.addEventListener("touchend", touchend, false);
+    }
 
-function touchmove(e) {
-    let x = e.touches[0].clientX - 20;
-    let y = e.touches[0].clientY - 20;
-    cost_counter.style.left = x + "px";
-    cost_counter.style.top = y + "px";
-}
+    function touchmove(e) {
+        let x = e.touches[0].clientX - 20;
+        let y = e.touches[0].clientY - 20;
+        cost_counter.style.left = x + "px";
+        cost_counter.style.top = y + "px";
+    }
 
-function touchend() {
-    window.removeEventListener("touchmove", touchmove, false);
-    window.removeEventListener("touchend", touchend, false);
+    function touchend() {
+        window.removeEventListener("touchmove", touchmove, false);
+        window.removeEventListener("touchend", touchend, false);
+    }
 }

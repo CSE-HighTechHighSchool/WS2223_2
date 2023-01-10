@@ -73,7 +73,9 @@ function signOutUser() {
     console.log(error);
 })}
 
-window.onload = function () {
+window.onload = window.addEventListener("load",navload(),false);
+
+export function navload () {
   getUsername();
 
   if (currentUser == null) {

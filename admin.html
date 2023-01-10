@@ -22,6 +22,7 @@
     rel="stylesheet">
 
     <script src="js/home.js" type="module" defer></script>
+    <script src="js/admin.js" type="module" defer></script>
 
 </head>
 
@@ -97,7 +98,15 @@
         <div class="container m-auto position-relative pt-4 pb-3 fades">
             <h3 class="yellow-text"><strong>Open Orders</strong></h1>
             <h6>Orders that are pending fulfillment.</h6>
-            <div class="container open-orders"></div>
+            <div class="d-flex justify-content-center flex-wrap text-light" id="open_orders">
+              <!--
+              <div class="card brown-col m-3">
+                <div class="card-body">
+                  <h6 class="card-title">Order ID: <span id=""></span></h6>
+                </div>
+              </div>
+              -->
+            </div>
         </div>
 
 
@@ -105,6 +114,15 @@
         <div class="container m-auto position-relative pb-3 fades">
             <h3 class="yellow-text"><strong>Order History</strong></h1>
             <h6>Orders that have been fulfilled.</h6>
+            <div class="d-flex justify-content-center flex-wrap text-light" id="filled_orders">
+              <!--
+              <div class="card brown-col m-3">
+                <div class="card-body">
+                  <h6 class="card-title">Order ID: <span id=""></span></h6>
+                </div>
+              </div>
+              -->
+            </div>
         </div>
 
 

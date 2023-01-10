@@ -97,27 +97,30 @@ orderSubmission.addEventListener("click", (e) => {
   e.preventDefault();
   getUsername();
 
-  console.log("this worked")
+  get(ref(db, "orders/" + currentUser.uid)).then((snapshot) => {
+    if (snapshot.exists()) {
+      bootstrapAlert("You already have an order in progress. Wait for confirmation of order fulfillment before starting a new order.", "danger")
+    } else {
 
-  defineOrder(new Date().toLocaleString(), order_notes.value, false, currentUser.uid, apt_suite.value, address.value, town.value, state.value, zip.value);
+      defineOrder(new Date().toLocaleString(), order_notes.value, false, currentUser.uid, apt_suite.value, address.value, town.value, state.value, zip.value);
 
-  console.log("this worked too");
 
-  let totalCost = 0
+      let totalCost = 0
 
-  for (let i = 0; i < order_form_items.length; i++) {
-    addItem(order_form_items[i][0], order_form_items[i][1].value, currentUser.uid).then(
-      (cost) => {
-        totalCost += cost
-        console.log(totalCost)
-        update(ref(db, `orders/${currentUser.uid}/price`), {
-          price: totalCost
-        });
+      for (let i = 0; i < order_form_items.length; i++) {
+        addItem(order_form_items[i][0], order_form_items[i][1].value, currentUser.uid).then(
+          (cost) => {
+            totalCost += cost
+            console.log(totalCost)
+            update(ref(db, `orders/${currentUser.uid}/price`), {
+              price: totalCost
+            });
+          }
+        );
       }
-    );
-  }
 
-  console.log("this worked too");
+    }
+  });
 
 });
 
@@ -126,6 +129,25 @@ orderSubmission.addEventListener("click", (e) => {
 // Set Data
 
 function defineOrder(date, ordernotes, fulfillmentstatus, userID, apt_suite, address, town, state, zip) {
+  let firstName = "";
+  let lastName = "";
+
+  get(ref(db, `users/${userID}/accountInfo`)).then((snapshot) => {
+    if (snapshot.exists()) {
+      let user = snapshot.val();
+      firstName = user.firstName;
+      lastName = user.lastName;
+
+      set(ref(db, `orders/${userID}/user_info`), {
+        first_name: firstName,
+        last_name: lastName,
+      })
+
+    } else {
+      console.log("No data available");
+    }
+  });
+
   set(ref(db, `orders/${userID}/date`), {
     date: date,
   })
@@ -210,7 +232,7 @@ async function addItem(item, quantity, userID) {
       console.log("item price = " + itemPrice)
 
     }).catch((error) => {
-        bootstrapAlert(`Error: ${error.code} - ${error.message}`, 'danger');
+      bootstrapAlert(`Error: ${error.code} - ${error.message}`, 'danger');
     });
 
     return itemPrice * quantity;
