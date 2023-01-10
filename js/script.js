@@ -205,7 +205,11 @@ function mousedown(e) {
 
 function mousemove(e) {
     let x = e.clientX - 20;
+    if (x < 20) x = 20;
+    if (x > window.innerWidth - 40) x = window.innerWidth - 40;
     let y = e.clientY - 20;
+    if (y < 110) y = 110;
+    if (y > window.innerHeight - 120) y = window.innerHeight - 120;
     cost_counter.style.left = x + "px";
     cost_counter.style.top = y + "px";
 }
