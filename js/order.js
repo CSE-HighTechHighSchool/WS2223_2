@@ -274,9 +274,11 @@ orderSubmission.addEventListener("click", (e) => {
   } else {
     bootstrapAlert("Please add at least one item to your order.", "danger")
   }}).then(() => {
-    bootstrapAlert("Order submitted!", "success");
+    bootstrapAlert("Order submitted! Redirecting you in a few seconds.", "success");
+    setTimeout(() => {  window.location.href = "index.html"; }, 5000);
   }).catch((error) => {
     bootstrapAlert(error, "danger");
+    
 
   });
 });
