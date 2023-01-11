@@ -93,7 +93,15 @@ function makeOrders() {
       // Get the order's notes
       let orderNotes = orderInfo.order_notes.text;
   
-      let orderThings = [`Name: ${orderName}`, `Address: ${orderAddress}`, `Total Price: ${orderPrice}`, `Status: ${orderStatus}`, `Date: ${orderDate}`, `Notes: ${orderNotes}`]
+      let orderThings = [`Name: ${orderName}`, `Address: ${orderAddress}`, `Total Price: $${orderPrice}`, `Fulfilled: ${orderStatus}`, `Date: ${orderDate}`, `Notes: ${orderNotes}`]
+
+      const fulfillOrder = (orderKey) => {
+        console.log(orderKey)
+        let orderRef = ref(db, 'orders/' + orderKey + '/fulfillment_status');
+        set(orderRef, {
+          fulfilled: true
+        });
+      }
 
       let order_card = document.createElement('div');
       order_card.classList.add('card', 'brown-col', 'm-3')
@@ -102,14 +110,36 @@ function makeOrders() {
       let order_card_title = document.createElement('h5');
       order_card_title.classList.add('card-title', 'strong')
       order_card_title.textContent = "Order #" + orderKey.slice(0, 6);
+      let order_card_text = document.createElement('div');
+      order_card_text.classList.add('card-text', 'text-left', 'small')
+      order_card_text.innerHTML += "<br>"
+      for (let thing in orderThings) {
+        order_card_text.innerHTML += `${orderThings[thing]}<br>`
+      }
+      order_card_text.innerHTML += `<br>Items:<br>| `
+      for (let i = 0; i < orderItems.length; i++) {
+        order_card_text.innerHTML += `${orderItems[i]} - ${orderQuantities[i]} | `
+      }
       let order_card_button = document.createElement('button');
       order_card_button.classList.add('btn', 'btn-light', 'btn-sm', 'float-end', 'strong', 'ms-2')
-      order_card_button.textContent = "View Order";
-      order_card_button.setAttribute('data-bs-toggle', 'modal');
-      order_card_button.setAttribute('data-bs-target', `${orderKey.slice(0, 6)}_modal`);
+      order_card_button.textContent = "Fulfill Order";
+      order_card_button.addEventListener('click', fulfillOrder(orderKey))
       order_card_button.setAttribute('id', `${orderKey.slice(0, 6)}_button`);
 
-      console.log(order_card)
+      order_card_body.appendChild(order_card_title).appendChild(order_card_button);
+      order_card_body.appendChild(order_card_text)
+
+      if (orderStatus == true) {
+        order_card_button.classList.add('disabled');
+        order_card_button.textContent = "Order Fulfilled";
+
+        filled_orders.appendChild(order_card).appendChild(order_card_body)
+
+        
+      } else {
+        open_orders.appendChild(order_card).appendChild(order_card_body)
+
+      }
 
 
 
@@ -150,14 +180,6 @@ function makeOrders() {
       } else {
         open_orders.appendChild(order_card).appendChild(order_card_body).appendChild(order_card_title).appendChild(order_card_button);
       }*/
-
-      const fulfillOrder = (orderKey) => {
-        console.log(orderKey)
-        let orderRef = ref(db, 'orders/' + orderKey + '/fulfillment_status');
-        set(orderRef, {
-          fulfilled: true
-        });
-      }
       
     }
   })

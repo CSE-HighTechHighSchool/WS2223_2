@@ -92,43 +92,34 @@ let food_categories = {
 
 // Detect when order form submit button is clicked and do this whole process with it
 
-let orderSubmission = document.getElementById("order-form");
-orderSubmission.addEventListener("click", (e) => {
-  e.preventDefault();
-  getUsername();
 
-  get(ref(db, "orders/" + currentUser.uid)).then((snapshot) => {
+
+async function countTimes() {
+
+  let orderCount = 0;
+
+  await get(ref(db, "orders")).then((snapshot) => {
+    // count the number of times an id appears in orders
     if (snapshot.exists()) {
-      bootstrapAlert("You already have an order in progress. Wait for confirmation of order fulfillment before starting a new order.", "danger")
-    } else {
-
-      defineOrder(new Date().toLocaleString(), order_notes.value, false, currentUser.uid, apt_suite.value, address.value, town.value, state.value, zip.value);
-
-
-      let totalCost = 0
-
-      for (let i = 0; i < order_form_items.length; i++) {
-        addItem(order_form_items[i][0], order_form_items[i][1].value, currentUser.uid).then(
-          (cost) => {
-            totalCost += cost
-            console.log(totalCost)
-            update(ref(db, `orders/${currentUser.uid}/price`), {
-              price: totalCost
-            });
-          }
-        );
-      }
-
+      snapshot.forEach(child => {
+        if (child.key.match(currentUser.uid)) {
+          orderCount++;
+        }
+      });
+      
     }
   });
 
-});
+  return orderCount;
+  
+}
 
 
 
 // Set Data
 
-function defineOrder(date, ordernotes, fulfillmentstatus, userID, apt_suite, address, town, state, zip) {
+function defineOrder(orderCount, date, ordernotes, fulfillmentstatus, userID, apt_suite, address, town, state, zip) {
+
   let firstName = "";
   let lastName = "";
 
@@ -138,17 +129,19 @@ function defineOrder(date, ordernotes, fulfillmentstatus, userID, apt_suite, add
       firstName = user.firstName;
       lastName = user.lastName;
 
-      set(ref(db, `orders/${userID}/user_info`), {
+      set(ref(db, `orders/${userID}_${orderCount}/user_info`), {
         first_name: firstName,
         last_name: lastName,
-      })
+      }).then(() => {console.log(firstName)})
+
+      
 
     } else {
       console.log("No data available");
     }
   });
 
-  set(ref(db, `orders/${userID}/date`), {
+  set(ref(db, `orders/${userID}_${orderCount}/date`), {
     date: date,
   })
     .then(() => { })
@@ -156,7 +149,7 @@ function defineOrder(date, ordernotes, fulfillmentstatus, userID, apt_suite, add
       bootstrapAlert(`Error: ${error.code} - ${error.message}`, 'danger');
     });
 
-  set(ref(db, `orders/${userID}/contact_info`), {
+  set(ref(db, `orders/${userID}_${orderCount}/contact_info`), {
     email_address: currentUser.email
   })
     .then(() => { })
@@ -164,7 +157,7 @@ function defineOrder(date, ordernotes, fulfillmentstatus, userID, apt_suite, add
       bootstrapAlert(`Error: ${error.code} - ${error.message}`, 'danger');
     });
 
-  set(ref(db, `orders/${userID}/order_notes`), {
+  set(ref(db, `orders/${userID}_${orderCount}/order_notes`), {
     text: ordernotes,
 
   })
@@ -173,7 +166,7 @@ function defineOrder(date, ordernotes, fulfillmentstatus, userID, apt_suite, add
       bootstrapAlert(`Error: ${error.code} - ${error.message}`, 'danger');
     });
 
-  set(ref(db, `orders/${userID}/fulfillment_status`), {
+  set(ref(db, `orders/${userID}_${orderCount}/fulfillment_status`), {
     fulfilled: fulfillmentstatus,
 
   })
@@ -182,24 +175,21 @@ function defineOrder(date, ordernotes, fulfillmentstatus, userID, apt_suite, add
       bootstrapAlert(`Error: ${error.code} - ${error.message}`, 'danger');
     });
 
-  set(ref(db, `orders/${userID}/address`), {
+  set(ref(db, `orders/${userID}_${orderCount}/address`), {
     address: address,
     apt_suite: apt_suite,
     town: town,
     state: state,
     zip: zip
   })
-    .then(() => {
-      bootstrapAlert(`Your order was sent successfully`, 'success');
-    })
     .catch((error) => {
       bootstrapAlert(`Error: ${error.code} - ${error.message}`, 'danger');
     });
 };
 
-async function addItem(item, quantity, userID) {
+async function addItem(orderCount, item, quantity, userID) {
   if (quantity > 0) {
-    await update(ref(db, `orders/${userID}/items_ordered`), {
+    await update(ref(db, `orders/${userID}_${orderCount}/items_ordered`), {
       [item]: quantity,
     })
       .catch((error) => {
@@ -241,3 +231,52 @@ async function addItem(item, quantity, userID) {
     return 0;
   }
 };
+
+let orderSubmission = document.getElementById("order-form");
+orderSubmission.addEventListener("click", (e) => {
+  e.preventDefault();
+  getUsername();
+
+  let orderExists = false;
+
+  for (let i = 0; i < order_form_items.length; i++) {
+    if (order_form_items[i][1].value != null && order_form_items[i][1].value > 0) {
+      orderExists = true;
+    }
+  }
+
+  countTimes().then((count) => {
+
+
+
+  if (orderExists) {
+  defineOrder(count, new Date().toLocaleString(), order_notes.value, false, currentUser.uid, apt_suite.value, address.value, town.value, state.value, zip.value);
+
+
+  let totalCost = 0
+
+  for (let i = 0; i < order_form_items.length; i++) {
+    addItem(count, order_form_items[i][0], order_form_items[i][1].value, currentUser.uid).then(
+      (cost) => {
+        totalCost += cost
+        console.log(totalCost)
+        update(ref(db, `orders/${currentUser.uid}_${count}/price`), {
+          price: totalCost
+        });
+      }
+    ).catch((error) => {
+      bootstrapAlert(error, "danger");
+      console.log(error)
+    
+    });
+  }
+
+  } else {
+    bootstrapAlert("Please add at least one item to your order.", "danger")
+  }}).then(() => {
+    bootstrapAlert("Order submitted!", "success");
+  }).catch((error) => {
+    bootstrapAlert(error, "danger");
+
+  });
+});
