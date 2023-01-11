@@ -93,7 +93,7 @@ function makeOrders() {
       // Get the order's notes
       let orderNotes = orderInfo.order_notes.text;
   
-      let orderThings = [`Name: ${orderName}`, `Address: ${orderAddress}`, `Total Price: $${orderPrice}`, `Fulfilled: ${orderStatus}`, `Date: ${orderDate}`, `Notes: ${orderNotes}`]
+      let orderThings = [`Name: ${orderName}`, `Addr: ${orderAddress}`, `Price: $${orderPrice}`, `Fulfilled: ${orderStatus}`, `Date: ${orderDate}`, `Notes: ${orderNotes}`]
 
       const fulfillOrder = (orderKey) => {
         console.log(orderKey)
@@ -101,30 +101,31 @@ function makeOrders() {
         set(orderRef, {
           fulfilled: true
         });
+
       }
 
       let order_card = document.createElement('div');
-      order_card.classList.add('card', 'brown-col', 'm-3')
+      order_card.classList.add('card', 'brown-col', 'm-2')
       let order_card_body = document.createElement('div');
       order_card_body.classList.add('card-body')
       let order_card_title = document.createElement('h5');
       order_card_title.classList.add('card-title', 'strong')
-      order_card_title.textContent = "Order #" + orderKey.slice(0, 6);
+      order_card_title.textContent = "Order ID: " + orderKey.slice(0, 6) + orderKey.slice(-2);
       let order_card_text = document.createElement('div');
       order_card_text.classList.add('card-text', 'text-left', 'small')
       order_card_text.innerHTML += "<br>"
       for (let thing in orderThings) {
         order_card_text.innerHTML += `${orderThings[thing]}<br>`
       }
-      order_card_text.innerHTML += `<br>Items:<br>| `
+      order_card_text.innerHTML += `<br>Items:<br>`
       for (let i = 0; i < orderItems.length; i++) {
-        order_card_text.innerHTML += `${orderItems[i]} - ${orderQuantities[i]} | `
+        order_card_text.innerHTML += `| ${orderItems[i]} - ${orderQuantities[i]} |<br>`
       }
       let order_card_button = document.createElement('button');
       order_card_button.classList.add('btn', 'btn-light', 'btn-sm', 'float-end', 'strong', 'ms-2')
       order_card_button.textContent = "Fulfill Order";
       order_card_button.addEventListener('click', fulfillOrder(orderKey))
-      order_card_button.setAttribute('id', `${orderKey.slice(0, 6)}_button`);
+      order_card_button.setAttribute('id', `${orderKey.slice(0, 6) + orderKey.slice(-2)}_button`);
 
       order_card_body.appendChild(order_card_title).appendChild(order_card_button);
       order_card_body.appendChild(order_card_text)
@@ -140,46 +141,6 @@ function makeOrders() {
         open_orders.appendChild(order_card).appendChild(order_card_body)
 
       }
-
-
-
-      /*let order_modal = document.createElement('div');
-      order_modal.classList.add('modal', 'fade', 'bg-light', 'text-dark');
-      order_modal.setAttribute('id', `${orderKey.slice(0, 6)}_modal`);
-      order_modal.setAttribute('tabindex', '-1');
-      let order_modal_title = document.createElement('h3');
-      order_modal_title.classList.add('modal-title', 'strong')
-      order_modal_title.textContent = "Order #" + orderKey.slice(0, 6);
-      let order_modal_body = document.createElement('div');
-      order_modal_body.classList.add('modal-body');
-      order_modal_body.innerHTML = "";
-      for (let thing in orderThings) {
-        order_modal_body.innerHTML += `<h5>${orderThings[thing]}</h5>`
-      }
-      let order_modal_dismissal = document.createElement('button');
-      order_modal_dismissal.classList.add('btn', 'btn-primary', 'btn-md', 'float-end', 'btn-close')
-      order_modal_dismissal.setAttribute('data-bs-dismiss', 'modal');
-      order_modal_dismissal.setAttribute('aria-label', 'Close');
-      let order_modal_footer = document.createElement('div');
-      order_modal_footer.classList.add('modal-footer');
-      let order_modal_fulfillment = document.createElement('button');
-      order_modal_fulfillment.classList.add('btn', 'btn-warning', 'btn-md', 'float-end')
-      order_modal_fulfillment.textContent = "Fulfill Order";
-      order_modal_fulfillment.setAttribute('id', `${orderKey.slice(0, 6)}_fulfillment`);
-      order_modal_fulfillment.setAttribute('onclick', `fulfillOrder('${orderKey}')`);
-
-      order_modal.appendChild(order_modal_title).appendChild(order_modal_dismissal);
-      order_modal.appendChild(order_modal_body);
-      order_modal.appendChild(order_modal_footer).appendChild(order_modal_fulfillment);
-
-      if (orderStatus == true) {
-        order_modal_fulfillment.classList.add('disabled');
-        order_modal_fulfillment.textContent = "Order Fulfilled";
-
-        filled_orders.appendChild(order_card).appendChild(order_card_body).appendChild(order_card_title).appendChild(order_card_button);
-      } else {
-        open_orders.appendChild(order_card).appendChild(order_card_body).appendChild(order_card_title).appendChild(order_card_button);
-      }*/
       
     }
   })
