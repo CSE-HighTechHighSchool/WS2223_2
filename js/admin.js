@@ -57,6 +57,7 @@ function getUsername() {
 }
 
 // Create function that gets all orders and iterates through them
+
 function makeOrders() {
   let orders = null;
   // Get reference to the orders node
@@ -72,48 +73,33 @@ function makeOrders() {
   .then(() => {
     for (let order in orders) {
       console.log("this works")
-      // Get the order's information
+
       let orderInfo = orders[order];
-      // Get the order's key
       let orderKey = order;
-      // Get the order's name
       let orderName = orderInfo.user_info.first_name + " " + orderInfo.user_info.last_name;
-      // Get the order's address
       let orderAddress = orderInfo.address.apt_suite + " " + orderInfo.address.address + ", " + orderInfo.address.town + ", " + orderInfo.address.state + " " + orderInfo.address.zip;
-      // Get the order's items
       let orderItems = Object.keys(orderInfo.items_ordered)
-      // Get the order's quantities
       let orderQuantities = Object.values(orderInfo.items_ordered);
-      // Get the order's total
       let orderPrice = orderInfo.price.price;
-      // Get the order's status
       let orderStatus = orderInfo.fulfillment_status.fulfilled;
-      // Get the order's date
       let orderDate = orderInfo.date.date;
-      // Get the order's notes
       let orderNotes = orderInfo.order_notes.text;
-  
       let orderThings = [`Name: ${orderName}`, `Addr: ${orderAddress}`, `Price: $${orderPrice}`, `Fulfilled: ${orderStatus}`, `Date: ${orderDate}`, `Notes: ${orderNotes}`]
-
-      const fulfillOrder = (orderKey) => {
-        console.log(orderKey)
-        let orderRef = ref(db, 'orders/' + orderKey + '/fulfillment_status');
-        set(orderRef, {
-          fulfilled: true
-        });
-
-      }
 
       let order_card = document.createElement('div');
       order_card.classList.add('card', 'brown-col', 'm-2')
+
       let order_card_body = document.createElement('div');
       order_card_body.classList.add('card-body')
+
       let order_card_title = document.createElement('h5');
       order_card_title.classList.add('card-title', 'strong')
       order_card_title.textContent = "Order ID: " + orderKey.slice(0, 6) + orderKey.slice(-2);
+
       let order_card_text = document.createElement('div');
       order_card_text.classList.add('card-text', 'text-left', 'small')
       order_card_text.innerHTML += "<br>"
+
       for (let thing in orderThings) {
         order_card_text.innerHTML += `${orderThings[thing]}<br>`
       }
@@ -124,7 +110,6 @@ function makeOrders() {
       let order_card_button = document.createElement('button');
       order_card_button.classList.add('btn', 'btn-light', 'btn-sm', 'float-end', 'strong', 'ms-2')
       order_card_button.textContent = "Fulfill Order";
-      order_card_button.addEventListener('click', fulfillOrder(orderKey))
       order_card_button.setAttribute('id', `${orderKey.slice(0, 6) + orderKey.slice(-2)}_button`);
 
       order_card_body.appendChild(order_card_title).appendChild(order_card_button);
@@ -139,8 +124,21 @@ function makeOrders() {
         
       } else {
         open_orders.appendChild(order_card).appendChild(order_card_body)
+        // remove a class from order_card
+        order_card.classList.replace('brown-col', 'orange-col')
 
       }
+
+      order_card_button.addEventListener('click', () => {
+        console.log(orderKey)
+        let orderRef = ref(db, 'orders/' + orderKey + '/fulfillment_status');
+        set(orderRef, {
+          fulfilled: true
+        });
+        window.location.reload();
+      
+      })
+
       
     }
   })
