@@ -94,7 +94,7 @@ function makeOrders() {
 
       let order_card_title = document.createElement('h5');
       order_card_title.classList.add('card-title', 'strong')
-      order_card_title.textContent = "Order ID: " + orderKey.slice(0, 6) + orderKey.slice(-2);
+      order_card_title.textContent = "Order ID: " + orderKey.slice(0, 6) + orderKey.split("_")[1];
 
       let order_card_text = document.createElement('div');
       order_card_text.classList.add('card-text', 'text-left', 'small')
@@ -109,15 +109,15 @@ function makeOrders() {
       }
       let order_card_button = document.createElement('button');
       order_card_button.classList.add('btn', 'btn-light', 'btn-sm', 'float-end', 'strong', 'ms-2')
-      order_card_button.textContent = "Fulfill Order";
-      order_card_button.setAttribute('id', `${orderKey.slice(0, 6) + orderKey.slice(-2)}_button`);
+      order_card_button.textContent = "Fulfill";
+      order_card_button.setAttribute('id', `${orderKey.slice(0, 6) + orderKey.split("_")[1]}_button`);
 
       order_card_body.appendChild(order_card_title).appendChild(order_card_button);
       order_card_body.appendChild(order_card_text)
 
       if (orderStatus == true) {
         order_card_button.classList.add('disabled');
-        order_card_button.textContent = "Order Fulfilled";
+        order_card_button.textContent = "Fulfilled";
 
         filled_orders.appendChild(order_card).appendChild(order_card_body)
 
