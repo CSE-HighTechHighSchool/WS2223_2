@@ -123,35 +123,59 @@ if (currentUser == null) {
   }
 }
 };
+function validation(firstName, lastName, email) {
+    let fNameRegex = /^[a-zA-Z'!]+$/;
+    let lNameRegex = /^[a-zA-Z\s'!]+$/;
+    let emailRegex = /^([a-zA-Z0-9_\\-\\.]+)@((gmail.com)|(yahoo.com)|(outlook.com)|(hotmail.com))$/;  
+    
+    if (!firstName.match(fNameRegex) || !lastName.match(lNameRegex) || !email.match(emailRegex) ) {
+      bootstrapAlert("Please complete all fields properly. First name is only capital and lowercase letters. Last name is only capital and lowercase letters. Email must be a valid gmail, yahoo, outlook, or hotmail address.", "danger");
+      return false;
+    }
+  
+    return true;
+}
 
+function isEmptyorSpaces(str){
+    return str === null || str.match(/^ *$/) !== null
+  }
 
-function updateAccountInfo(name, email, userID) {
+function updateAccountInfo(name, newemail, userID) {
     // Set the data
     
     const nameArr = name.split(" ");
     const firstName = nameArr[0];
     const lastName = nameArr.slice(1).join(' ');
 
-    update(ref(db, `users/${userID}/accountInfo`), {
-        email: email,
-        firstName: firstName,
-        lastName: lastName,
-    })
-    .then(() => {
-        alert("Data updated successfully");
-        window.location.href = "myacc.html";
-    })
-    .catch((error) => {
-        alert(`Error: ${error.code} - ${error.message}`);
-    });
+    console.log(validation(firstName, lastName, newemail));
 
-    updateEmail(auth.currentUser, email).then(() => {
-        // Email updated!
-        // ...
-    }).catch((error) => {
-        // An error occurred
-        // ...
-    });
+    if (validation(firstName, lastName, newemail)) {
+        updateEmail(auth.currentUser, newemail).then(() => {
+            // Email updated!
+            // ...
+        }).catch((error) => {
+            // An error occurred
+            // ...
+        });
+        
+        update(ref(db, `users/${userID}/accountInfo`), {
+            email: newemail,
+            firstName: firstName,
+            lastName: lastName,
+        })
+        .then(() => {
+            alert("Data updated successfully");
+            window.location.href = "myacc.html";
+        })
+        .catch((error) => {
+            alert(`Error: ${error.code} - ${error.message}`);
+        });
+    
+        
+
+    }
+
+    
 }
 
 document.getElementById('submitAccountInfo').addEventListener("click", (e) => {
