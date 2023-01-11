@@ -78,7 +78,15 @@ function makeOrders() {
       let orderKey = order;
       let orderName = orderInfo.user_info.first_name + " " + orderInfo.user_info.last_name;
       let orderAddress = orderInfo.address.apt_suite + " " + orderInfo.address.address + ", " + orderInfo.address.town + ", " + orderInfo.address.state + " " + orderInfo.address.zip;
-      let orderItems = Object.keys(orderInfo.items_ordered)
+      let orderItems = Object.keys(orderInfo.items_ordered);
+
+      orderItems = orderItems.map(item => {
+          if (!item.includes("_")) {
+              return item.charAt(0).toUpperCase() + item.slice(1);
+          } else {
+              return item.split('_').map(word =>  word === 'and' ? 'and' : word.charAt(0).toUpperCase() + word.slice(1) ).join(' ');
+          }
+      });
       let orderQuantities = Object.values(orderInfo.items_ordered);
       let orderPrice = orderInfo.price.price;
       let orderStatus = orderInfo.fulfillment_status.fulfilled;
