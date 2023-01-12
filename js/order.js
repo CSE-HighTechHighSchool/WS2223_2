@@ -275,7 +275,7 @@ orderSubmission.addEventListener("click", (e) => {
     bootstrapAlert("Please add at least one item to your order.", "danger")
   }}).then(() => {
     bootstrapAlert("Order submitted! Redirecting you in a few seconds.", "success");
-    setTimeout(() => {  window.location.href = "index.html"; }, 5000);
+    setTimeout(() => {  window.location.href = "index.html"; }, 3000);
   }).catch((error) => {
     bootstrapAlert(error, "danger");
     
