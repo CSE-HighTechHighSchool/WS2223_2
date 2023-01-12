@@ -80,7 +80,7 @@ export function navload () {
 
   if (currentUser == null) {
 
-    signOutLink.innerText = "Sign In";
+    signOutLink.innerText = "Sign In To Order";
     signOutLink.href = "signIn.html";
     signOutLink.classList.add("strong");
     orderLink.remove();
