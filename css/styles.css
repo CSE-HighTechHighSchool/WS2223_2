@@ -13,7 +13,9 @@ h5, h6, p {
 /* Resizes h1 (title size) based off of viewport width */
 h1 {
     font-size: max(calc(5vw), 3.5rem);
-}
+} 
+
+
 
 
 /* Changes how links look*/
@@ -90,6 +92,7 @@ a:hover {
     animation-fill-mode: forwards;
 }
 
+/* Fades towards the bottom */
 .fade-down {
     animation: fadeInAnimation ease 100ms, moveDown ease-out 100ms;
     animation-iteration-count: 1;
@@ -286,6 +289,8 @@ a:hover {
     border-radius: 20px;
 }
 
+/* Less rounded borders */
+
 .border-less-round {
     border-radius: 5px;
     border: none;
@@ -480,6 +485,8 @@ h1.menu-title {
     max-height: 700px;
 }
 
+/* -- Font sizings -- */
+
 .small {
     font-size: 12px;
 }
@@ -492,6 +499,8 @@ h1.menu-title {
     font-weight: 600;
 }
 
+/* -- Input Box Format -- */
+
 .input {
     width: max(200px, 80vw);
 
@@ -500,6 +509,7 @@ h1.menu-title {
 .shadow {
     box-shadow: 10px 10px;
 }
+
 
 
 /* --- ID CSS --- */
@@ -513,6 +523,8 @@ h1.menu-title {
     bottom: 20px;
     left: 50vw;
 }
+
+/* --- Container for alert messages --- */
 
 #alert-container {
     position: fixed;
@@ -533,6 +545,8 @@ h1.menu-title {
     pointer-events: auto; 
 }
 
+/* --- Counts cost of order --- */
+
 #cost_counter {
     position: fixed;
     cursor: move;
@@ -546,6 +560,8 @@ h1.menu-title {
 #cost_counter > div {
     z-index: 1000;
 }
+
+
 
 #move_icon {
     position: absolute;

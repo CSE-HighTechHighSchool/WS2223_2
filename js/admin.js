@@ -41,7 +41,7 @@ let open_orders = document.getElementById('open_orders');
 let filled_orders = document.getElementById('filled_orders');
 let currentUser = null;
 
-// ----------------------- Get User's Name'Name ------------------------------
+// ----------------------- Get User's Name ------------------------------
 
 function getUsername() {
   // Get the user's name from storage
@@ -64,7 +64,6 @@ function makeOrders() {
   // Get all orders
   get(child(ref(db), 'orders')).then((snapshot) => {
     if (snapshot.exists()) {
-      console.log(snapshot.val());
       orders = snapshot.val();
     } else {
       console.log("No data available");
@@ -142,23 +141,9 @@ function makeOrders() {
         // send email to user to confirm order
 
         order_card_button.addEventListener('click', () => {
-          console.log(orderKey)
           let orderRef = ref(db, 'orders/' + orderKey + '/fulfillment_status');
           set(orderRef, {
             fulfilled: true
-          });
-          Email.send({
-            Host: "smtp.elasticemail.com",
-            Username: "fusion360cuisine@gmail.com",
-            Password: "360degreesofFOOD",
-            To: "xhaidendsouza@gmail.com",
-            From: "fusion360cuisine@gmail.com",
-            Subject: "Order Status",
-            Body: "Your order has been fufilled!"
-          }).then(function (message) {
-
-            alert("Email sent successfully")
-
           });
           window.location.reload();
 
@@ -168,7 +153,7 @@ function makeOrders() {
       }
     })
     .catch((error) => {
-      console.log(error)
+      bootstrapAlert("Error getting documents: " + error, "danger");
     });
 }
 
@@ -197,10 +182,9 @@ function clearFulfilled(date) {
   // Get all orders
   get(child(ref(db), 'orders')).then((snapshot) => {
     if (snapshot.exists()) {
-      console.log(snapshot.val());
       orders = snapshot.val();
     } else {
-      console.log("No data available");
+      bootstrapAlert("No data available", "danger");
     }
   }
   ).then(() => {
@@ -212,7 +196,6 @@ function clearFulfilled(date) {
         let orderRef = ref(db, 'orders/' + orderKey);
         get(orderRef).then((snapshot) => {
           if (snapshot.exists()) {
-            console.log(snapshot.val());
             let orderPrice = snapshot.val().price.price;
             totalPrice += orderPrice;
           } else {
@@ -229,6 +212,8 @@ function clearFulfilled(date) {
     }}}).catch((error) => {console.log(error)})
 }
 
+// Get chart data
+
 async function chartData() {
   let xVals = [];
   let yVals = [];
@@ -237,13 +222,34 @@ async function chartData() {
   let month = date.getMonth() + 1;
   let year = date.getFullYear();
   let this_month = year + "-" + month;
-  let ref = ref(db, 'revenue/' + this_month);
+  let rev = 'revenue/';
+  get(ref(db, rev)).then((snapshot) => {
+    if (snapshot.exists()) {
+      revenue = snapshot.val();
+    } else {
+      console.log("No data available");
+    }
+  }).then(() => {
+    for (let day in revenue) {
+      if (day.includes(this_month)) {
+        xVals.push(day);
+        yVals.push(revenue[day].revenue);
+      }
+    }
+  }).catch((error) => {
+    bootstrapAlert("Error getting documents: " + error, "danger");
+  });
   
+  return {xVals, yVals};
 
 }
 
+// Create chart
+
+
 async function chartCreator() {
   const data = await chartData();                            // waiting for getData to process, so that array vals are filled
+  console.log(data)
 
     const ctx = document.getElementById('revChart');     // Configured for chart.JS 3.x and above
     const myChart = new Chart(ctx, {
@@ -253,7 +259,7 @@ async function chartCreator() {
             datasets: [{
                 label: `Total Revenue`,
                 data: data.yVals,
-                backgroundColor: 'rgba(83, 86, 91, 1)',
+                backgroundColor: '#ad5613',
                 borderWidth: 1
             }]
         },
@@ -281,7 +287,7 @@ async function chartCreator() {
                         },
                     },
                     ticks: {
-                        maxTicksLimit: data.yCon.length
+                        maxTicksLimit: data.yVals.length
                     }
                 }
             },
@@ -290,16 +296,21 @@ async function chartCreator() {
                     display: true,
                     text: `Revenue of this Month`,
                     font: {
-                        size: 24
+                        size: 24, 
+                        weight: 'bold', 
+                        family: 'Livvic'
                     },
                     padding: {
                         top: 10,
                         bottom: 30
                     },
-                    color: 'rgba(135, 76, 31, 1)'
+                    color: '#ad5613'
                 },
                 legend: {
-                    position: 'bottom'
+                    position: 'bottom',
+                    font: {
+                        family: 'Livvic',
+                    }
                 }
             }
         }

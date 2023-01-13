@@ -90,6 +90,10 @@ export function navload () {
     signOutLink.classList.add("strong");
     orderLink.remove();
 
+    if (window.location.href.match("admin.html")){
+      window.location.href = "index.html"
+    }
+
   } 
 
   // if user is signed in
@@ -120,6 +124,9 @@ export function navload () {
     } else {
       adminLink.innerText = "My Account"
       adminLink.setAttribute("href", "myacc.html")
+      if (window.location.href.match("admin.html")){
+        window.location.href = "index.html"
+      }
     }
     console.log(window.location.href)
     if (window.location.href.match("admin.html") != null) {

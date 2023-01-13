@@ -196,10 +196,9 @@ const existingLogin = (auth, email, password) => {
   }
 
   document.getElementById('displayPassword').addEventListener("click", (e) => {
-    
     toggleVisibility()
   });
-
+  
   function toggleVisibility() {
     var x = document.getElementById("loginPassword");
     if (x.type === "password") {
@@ -210,6 +209,7 @@ const existingLogin = (auth, email, password) => {
   }
 
   document.getElementById('displayPassword2').addEventListener("click", (e) => {
+    console.log("something")
     toggleVisibility2()
   });
 
