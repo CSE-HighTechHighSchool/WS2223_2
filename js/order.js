@@ -35,13 +35,11 @@ const auth = getAuth();
 // Initialize Database
 const db = getDatabase(app);
 
-// ---------------------// Get reference values -----------------------------
+/*
+  Gets username and data from storage.
+*/
 
 let currentUser = null;
-let welcome_message = document.getElementById("welcome-message");
-let end = document.getElementById("end");
-
-// ----------------------- Get User's Name'Name ------------------------------
 
 function getUsername() {
   // Get the user's name from storage
@@ -56,7 +54,9 @@ function getUsername() {
   if (currentUser != null) currentUser = currentUser.accountInfo;
 }
 
-// All variables to get values of order form
+/*
+  DOM Reference Values
+*/
 
 let lobster_bisque = document.getElementById("lobster_bisque");
 let lettuce_wraps = document.getElementById("lettuce_wraps");
@@ -81,6 +81,10 @@ let state = document.getElementById("state");
 let zip = document.getElementById("zip");
 let order_notes = document.getElementById("order_notes");
 
+/*
+  To make parsing the order form items easier. One associates the DOM reference with the item name. The other associates the item name with the food category.
+*/
+
 let order_form_items = [["lobster_bisque", lobster_bisque], ["lettuce_wraps", lettuce_wraps], ["poutine", poutine], ["asparagus", asparagus], ["salad", salad], ["burrito", burrito], ["paella", paella], ["fried_rice", fried_rice], ["injera", injera], ["ramen", ramen], ["baklava_brownies", baklava_brownies], ["mango_sticky_rice", mango_sticky_rice], ["cookies_and_cream_rasmalai", cookies_and_cream_rasmalai], ["coconut_milk_hot_chocolate", coconut_milk_hot_chocolate], ["chai_tea_pina_colada", chai_tea_pina_colada], ["peach_mango_blueberry_lemon_soda", peach_mango_blueberry_lemon_soda]];
 
 let food_categories = {
@@ -90,7 +94,9 @@ let food_categories = {
   "drinks": ["coconut_milk_hot_chocolate", "chai_tea_pina_colada", "peach_mango_blueberry_lemon_soda"]
 }
 
-// Detect when order form submit button is clicked and do this whole process with it
+/*
+  Count the number of times the user has ordered to create a unique order id.
+*/
 
 async function countTimes() {
 
@@ -113,8 +119,9 @@ async function countTimes() {
 }
 
 
-
-// Set Data
+/*
+  Define and set order constants. 
+*/
 
 function defineOrder(orderCount, date, ordernotes, fulfillmentstatus, userID, apt_suite, address, town, state, zip) {
 
@@ -185,7 +192,9 @@ function defineOrder(orderCount, date, ordernotes, fulfillmentstatus, userID, ap
     });
 };
 
-// Add an item to the order
+/*
+  Add items to order. Check if item is ordered. If so, find price of item, multiply by quantity, and add to total. 
+*/
 
 async function addItem(orderCount, item, quantity, userID) {
 
@@ -243,7 +252,9 @@ async function addItem(orderCount, item, quantity, userID) {
   }
 };
 
-// When order is submitted
+/*
+  Event listener for ordering. When user clicks this button, getUsername, countTimes, defineOrder, and addItem are called.
+*/
 
 let orderSubmission = document.getElementById("order-form");
 orderSubmission.addEventListener("click", (e) => {

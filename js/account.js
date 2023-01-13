@@ -57,8 +57,9 @@ if (keepLoggedIn == "yes") {
 if (currentUser != null) currentUser = currentUser.accountInfo;
 }
 
-// Sign-out function that will remove user info from local/session storage and
-// sign-out from FRD
+/* 
+  Signs out the user and redirects to the index page
+*/
 
 function signOutUser() {
 // Remove user info from local/session storage
@@ -73,8 +74,9 @@ auth.signOut().then(() => {
   console.log(error);
 })}
 
-// when window loads
-
+/* 
+  Window onload. This function is called when the page is loaded.
+*/
 window.onload = window.addEventListener("load",navload(),false);
 
 export function navload () {
@@ -133,7 +135,10 @@ export function navload () {
     }
 }};
 
-// validate if fields are completed properly
+/* 
+  Following two functions are validation. Validates the user's input and returns true if it is valid, false otherwise.
+*/
+
 
 function validation(firstName, lastName, email) {
     let fNameRegex = /^[a-zA-Z'!]+$/;
@@ -148,13 +153,14 @@ function validation(firstName, lastName, email) {
     return true;
 }
 
-// check if input is empty
-
 function isEmptyorSpaces(str){
     return str === null || str.match(/^ *$/) !== null
   }
 
-// Update Account Info
+
+/* 
+  Updates the user's account information.
+*/
 
 function updateAccountInfo(name, newemail, userID) {
     // Set the data
@@ -196,6 +202,10 @@ function updateAccountInfo(name, newemail, userID) {
 
     
 }
+
+/*
+  Event listener for the submit button. Gets the user's input and calls the updateAccountInfo function.
+*/
 
 document.getElementById('submitAccountInfo').addEventListener("click", (e) => {
     e.preventDefault();

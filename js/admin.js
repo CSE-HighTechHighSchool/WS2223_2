@@ -41,22 +41,9 @@ let open_orders = document.getElementById('open_orders');
 let filled_orders = document.getElementById('filled_orders');
 let currentUser = null;
 
-// ----------------------- Get User's Name ------------------------------
-
-function getUsername() {
-  // Get the user's name from storage
-  let keepLoggedIn = localStorage.getItem("keepLoggedInSwitch");
-  // If the user's name is not in storage, get it from session storage
-  if (keepLoggedIn == "yes") {
-    currentUser = JSON.parse(localStorage.getItem('user'))
-  } else {
-    currentUser = JSON.parse(sessionStorage.getItem('user'))
-  }
-
-  if (currentUser != null) currentUser = currentUser.accountInfo;
-}
-
-// Create function that gets all orders and iterates through them
+/*
+  Create function that gets all orders and iterates through them
+*/
 
 function makeOrders() {
   let orders = null;
@@ -139,6 +126,12 @@ function makeOrders() {
         }
 
         // send email to user to confirm order
+        let email = "xhaidendsouza@gmail.com" //[TAKE INFO FROM FIREBASE];
+        let subject = "Order Status";
+        let body = "Your order has been fulfilled!";
+        let link = "https://mail.google.com/mail/view=cm&fs=1&to=" + email + "&su=" + subject + "&body=" + body;
+        order_card_button.setAttribute('href', link);
+        order_card_button.setAttribute('target', "_blank");
 
         order_card_button.addEventListener('click', () => {
           let orderRef = ref(db, 'orders/' + orderKey + '/fulfillment_status');
@@ -157,12 +150,12 @@ function makeOrders() {
     });
 }
 
-window.addEventListener("load", () => {
-  getUsername()
-  makeOrders()
-  chartCreator();
 
-});
+
+
+/* 
+  Clears fulfilled orders at a specified time
+*/
 
 window.setInterval(function () { // Set interval for checking
   var date = new Date(); // Create a Date object to find out what time it is
@@ -173,7 +166,9 @@ window.setInterval(function () { // Set interval for checking
 }, 60000);
 
 
-// clear fulfilled orders
+/*
+  Order clearing function. Finds orders from the previous day and deletes them.
+*/
 
 function clearFulfilled(date) {
   let orders = null;
@@ -212,7 +207,9 @@ function clearFulfilled(date) {
     }}}).catch((error) => {console.log(error)})
 }
 
-// Get chart data
+/*
+  Gets revenue data from firebase and returns it in arrays
+*/
 
 async function chartData() {
   let xVals = [];
@@ -244,8 +241,9 @@ async function chartData() {
 
 }
 
-// Create chart
-
+/* 
+  Creates chart and displays it on the page
+*/
 
 async function chartCreator() {
   const data = await chartData();                            // waiting for getData to process, so that array vals are filled
@@ -316,3 +314,13 @@ async function chartCreator() {
         }
     });
 }
+
+/* 
+  Load function for admin.js. Creates order cards and makes a chart.
+*/
+
+window.addEventListener("load", () => {
+  makeOrders()
+  chartCreator();
+
+});

@@ -34,7 +34,9 @@
   // Initialize Database
   const db = getDatabase(app);
 
-// ---------------------// Get reference values -----------------------------
+/*
+  Reference values from the DOM
+*/
 
 let signOutLink = document.getElementById("signOut");
 let welcome_message = document.getElementById("welcome-message");
@@ -42,7 +44,9 @@ let orderLink = document.getElementById("orderLink");
 let end = document.getElementById("end");
 let currentUser = null;
 
-// ----------------------- Get User's Name'Name ------------------------------
+/* 
+  Get the user's name from local/session storage.
+*/
 
 function getUsername() {
   // Get the user's name from storage
@@ -57,8 +61,9 @@ function getUsername() {
   if (currentUser != null) currentUser = currentUser.accountInfo;
 }
 
-// Sign-out function that will remove user info from local/session storage and
-// sign-out from FRD
+/*
+  Sign out user
+*/
 
 function signOutUser() {
   // Remove user info from local/session storage
@@ -73,8 +78,9 @@ function signOutUser() {
     console.log(error);
 })}
 
-// when window loads
-
+/*
+  Base loading function for the navbar
+*/
 window.onload = window.addEventListener("load",navload(),false);
 
 export function navload () {

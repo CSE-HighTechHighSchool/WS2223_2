@@ -1,4 +1,6 @@
-// Create a bootstrap alert
+/*
+  Creates a bootstrap alert. Used extensively in other scripts.
+*/
 
 export function bootstrapAlert(message, type) {
     var alert = document.createElement('div');

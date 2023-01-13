@@ -155,46 +155,46 @@ const scrollDown = (element) => {
 
 if (window.location.href.match('order.html') != null) {
 
-/*
-    This element tracks order cost as the user is in the process of ordering.
-*/
+    /*
+        This element tracks order cost as the user is in the process of ordering.
+    */
 
-let lobster_bisque = document.getElementById("lobster_bisque");
-let lettuce_wraps = document.getElementById("lettuce_wraps");
-let poutine = document.getElementById("poutine");
-let asparagus = document.getElementById("asparagus");
-let salad = document.getElementById("salad");
-let burrito = document.getElementById("burrito");
-let paella = document.getElementById("paella");
-let fried_rice = document.getElementById("fried_rice");
-let injera = document.getElementById("injera");
-let ramen = document.getElementById("ramen");
-let baklava_brownies = document.getElementById("baklava_brownies");
-let mango_sticky_rice = document.getElementById("mango_sticky_rice");
-let cookies_and_cream_rasmalai = document.getElementById("cookies_and_cream_rasmalai");
-let coconut_milk_hot_chocolate = document.getElementById("coconut_milk_hot_chocolate");
-let chai_tea_pina_colada = document.getElementById("chai_tea_pina_colada");
-let peach_mango_blueberry_lemon_soda = document.getElementById("peach_mango_blueberry_lemon_soda");
+    let lobster_bisque = document.getElementById("lobster_bisque");
+    let lettuce_wraps = document.getElementById("lettuce_wraps");
+    let poutine = document.getElementById("poutine");
+    let asparagus = document.getElementById("asparagus");
+    let salad = document.getElementById("salad");
+    let burrito = document.getElementById("burrito");
+    let paella = document.getElementById("paella");
+    let fried_rice = document.getElementById("fried_rice");
+    let injera = document.getElementById("injera");
+    let ramen = document.getElementById("ramen");
+    let baklava_brownies = document.getElementById("baklava_brownies");
+    let mango_sticky_rice = document.getElementById("mango_sticky_rice");
+    let cookies_and_cream_rasmalai = document.getElementById("cookies_and_cream_rasmalai");
+    let coconut_milk_hot_chocolate = document.getElementById("coconut_milk_hot_chocolate");
+    let chai_tea_pina_colada = document.getElementById("chai_tea_pina_colada");
+    let peach_mango_blueberry_lemon_soda = document.getElementById("peach_mango_blueberry_lemon_soda");
 
-let food_items = [[lobster_bisque, 7], [lettuce_wraps, 8], [poutine, 8], [asparagus, 7], [salad, 6], [burrito, 15], [paella, 16], [fried_rice, 14], [injera, 18], [ramen, 14], [baklava_brownies, 6], [mango_sticky_rice, 8], [cookies_and_cream_rasmalai, 7], [coconut_milk_hot_chocolate, 7], [chai_tea_pina_colada, 5], [peach_mango_blueberry_lemon_soda, 5]];
+    let food_items = [[lobster_bisque, 7], [lettuce_wraps, 8], [poutine, 8], [asparagus, 7], [salad, 6], [burrito, 15], [paella, 16], [fried_rice, 14], [injera, 18], [ramen, 14], [baklava_brownies, 6], [mango_sticky_rice, 8], [cookies_and_cream_rasmalai, 7], [coconut_milk_hot_chocolate, 7], [chai_tea_pina_colada, 5], [peach_mango_blueberry_lemon_soda, 5]];
 
-let cost_button = document.getElementById("cost_button");
-let cost_text = document.getElementById("cost_text");
+    let cost_button = document.getElementById("cost_button");
+    let cost_text = document.getElementById("cost_text");
 
-cost_button.addEventListener("click", () => {
-    console.log("did it work")
-    let cost = 0;
-    for (let i = 0; i < food_items.length; i++) {
-        if (food_items[i][0].value != 0) {
-            cost += food_items[i][1] * food_items[i][0].value
+    cost_button.addEventListener("click", () => {
+        console.log("did it work")
+        let cost = 0;
+        for (let i = 0; i < food_items.length; i++) {
+            if (food_items[i][0].value != 0) {
+                cost += food_items[i][1] * food_items[i][0].value
+            }
         }
-    }
-    cost_text.textContent = `$${cost}`;
-});
+        cost_text.textContent = `$${cost}`;
+    });
 
-/*
-    These functions allow the user to move the mini cost modal to any position.
-*/
+    /*
+        These functions allow the user to move the mini cost modal to any position.
+    */
 
     let cost_counter = document.getElementById("cost_counter");
 

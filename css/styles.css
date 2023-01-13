@@ -612,7 +612,7 @@ h1.menu-title {
 
 /* Alternate navbar configuration for smaller screens. Always brown.*/
 
-@media screen and (max-width: 992px) {
+@media screen and (max-width: 1200px) {
 
     .nb-stuff, .dark-brown-col, .post-anim-nb {
         background-color: rgba(50, 40, 28, 100);

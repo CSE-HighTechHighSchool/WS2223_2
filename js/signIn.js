@@ -33,7 +33,9 @@
 
 
 
-// ---------------- Register New Uswer --------------------------------//
+/*
+  This function will create the user with the registration form.
+*/
 
 document.getElementById('submitData').addEventListener("click", (e) => {
     e.preventDefault();
@@ -83,14 +85,15 @@ document.getElementById('submitData').addEventListener("click", (e) => {
     });
   
   });
-  
-  // --------------- Check for null, empty ("") or all spaces only ------------//
+
+/*
+  These two functions validate the user's input.
+*/
+
   function isEmptyorSpaces(str){
     return str === null || str.match(/^ *$/) !== null
   }
-  
-  // ---------------------- Validate Registration Da  ta -----------------------//
-  
+    
   function validation(firstName, lastName, email, password) {
     let fNameRegex = /^[a-zA-Z'!]+$/;
     let lNameRegex = /^[a-zA-Z\s'!]+$/;
@@ -108,8 +111,10 @@ document.getElementById('submitData').addEventListener("click", (e) => {
     return true;
   }
   
-  // --------------- Password Encryption -------------------------------------//
-  
+/*
+  These two functions will encrypt and decrypt the user's password.
+*/
+
   function encryptPass(password) {
     let encrypted = CryptoJS.AES.encrypt(password, password);
     return encrypted.toString();
@@ -121,9 +126,9 @@ document.getElementById('submitData').addEventListener("click", (e) => {
   }
 
 
-// ----------------- Login Existing User -----------------------------------//
-
-// ---------------------- Sign-In User ---------------------------------------//
+/*
+  This function will log the user in with the login form.
+*/
 
 document.getElementById('signIn').addEventListener("click", (e) => {
     e.preventDefault();
@@ -135,6 +140,10 @@ document.getElementById('signIn').addEventListener("click", (e) => {
     // Use Firebase to sign in user
     existingLogin(auth, email, password);
 });
+
+/*
+  Function called when signIn is triggered
+*/
 
 const existingLogin = (auth, email, password) => {
   signInWithEmailAndPassword(auth, email, password)
@@ -178,46 +187,17 @@ const existingLogin = (auth, email, password) => {
     });
   };
   
-  // ---------------- Keep User Logged In ----------------------------------//
-  
+/* 
+  "Remember me" function
+*/
+
   function login(user) {
     let keepLoggedIn = document.getElementById('keepLoggedInSwitch').ariaChecked;
-  
-    // Session storage temporary (only active while browser is open)
-    // Saved as a string
-    // Session storage cleared with a signout function
   
     if (!keepLoggedIn) {
       sessionStorage.setItem("user", JSON.stringify(user));
     } else {
       localStorage.setItem("keepLoggedInSwitch", "yes");
       localStorage.setItem("user", JSON.stringify(user));
-    }
-  }
-
-  document.getElementById('displayPassword').addEventListener("click", (e) => {
-    toggleVisibility()
-  });
-  
-  function toggleVisibility() {
-    var x = document.getElementById("loginPassword");
-    if (x.type === "password") {
-      x.type = "text";
-    } else {
-      x.type = "password";
-    }
-  }
-
-  document.getElementById('displayPassword2').addEventListener("click", (e) => {
-    console.log("something")
-    toggleVisibility2()
-  });
-
-  function toggleVisibility2() {
-    var x = document.getElementById("userPass");
-    if (x.type === "password") {
-      x.type = "text";
-    } else {
-      x.type = "password";
     }
   }
