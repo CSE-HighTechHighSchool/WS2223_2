@@ -75,6 +75,7 @@ function makeOrders() {
             return item.split('_').map(word => word === 'and' ? 'and' : word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
           }
         });
+
         let orderQuantities = Object.values(orderInfo.items_ordered);
         let orderPrice = orderInfo.price.price;
         let orderStatus = orderInfo.fulfillment_status.fulfilled;
@@ -125,20 +126,42 @@ function makeOrders() {
 
         }
 
-        // send email to user to confirm order
-        let email = "xhaidendsouza@gmail.com" //[TAKE INFO FROM FIREBASE];
-        let subject = "Order Status";
-        let body = "Your order has been fulfilled!";
-        let link = "https://mail.google.com/mail/view=cm&fs=1&to=" + email + "&su=" + subject + "&body=" + body;
-        order_card_button.setAttribute('href', link);
-        order_card_button.setAttribute('target', "_blank");
+        // get email of user who placed order
 
+        let userEmail = ""
+
+        get(ref(db, 'users/' + orderKey.split("_")[0])).then((snapshot) => {
+          if (snapshot.exists()) {
+            let user = snapshot.val();
+            userEmail = user.accountInfo.email;
+          } else {
+            console.log("No data available");
+          }
+        }).then(() => {
+          console.log(userEmail)
+        });
+
+        const email = {
+          Host: "smtp.elasticemail.com",
+          Username: "fusion360cuisine@gmail.com",
+          Password: "A6C896D054528ABFC57FB9EBF14E6FC3EC55",
+          To: userEmail,
+          From: "fusion360cuisine@gmail.com",
+          Subject: "Your order has been fulfilled!",
+          Body: "Your order has been fulfilled! Thank you for your business!"
+        }
+      
         order_card_button.addEventListener('click', () => {
           let orderRef = ref(db, 'orders/' + orderKey + '/fulfillment_status');
           set(orderRef, {
             fulfilled: true
+          }).then(() => {
+            Email.send(email).then((message) => {
+              bootstrapAlert("Order fulfilled!", "success");
+              setTimeout(() => {  window.location.reload() }, 1000);
+            })
+          }).catch((error) => {
           });
-          window.location.reload();
 
         })
 
@@ -220,7 +243,8 @@ async function chartData() {
   let year = date.getFullYear();
   let this_month = year + "-" + month;
   let rev = 'revenue/';
-  get(ref(db, rev)).then((snapshot) => {
+  
+  await get(ref(db, rev)).then((snapshot) => {
     if (snapshot.exists()) {
       revenue = snapshot.val();
     } else {
@@ -246,8 +270,7 @@ async function chartData() {
 */
 
 async function chartCreator() {
-  const data = await chartData();                            // waiting for getData to process, so that array vals are filled
-  console.log(data)
+  let data = await chartData();
 
     const ctx = document.getElementById('revChart');     // Configured for chart.JS 3.x and above
     const myChart = new Chart(ctx, {
@@ -275,7 +298,6 @@ async function chartCreator() {
                 },
                 y: {
                     beginAtZero: false,
-                    grace: "20%",
                     min: 0,
                     title: {
                         display: true,
@@ -321,6 +343,6 @@ async function chartCreator() {
 
 window.addEventListener("load", () => {
   makeOrders()
-  chartCreator();
+  chartCreator()
 
 });
