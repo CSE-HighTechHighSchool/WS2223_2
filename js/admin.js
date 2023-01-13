@@ -143,6 +143,19 @@ function makeOrders() {
         set(orderRef, {
           fulfilled: true
         });
+        Email.send({
+          Host: "smtp.mailtrap.io",
+          Username: "fusion360cuisine@gmail.com",
+          Password: "360degreesofFOOD",
+          To: "xhaidendsouza@gmail.com",
+          From: "fusion360cuisine@gmail.com",
+          Subject: "Order Status",
+          Body: "Your order has been fufilled!",
+          }).then(function (message) {
+        
+          alert("Email sent successfully")
+        
+          });
         window.location.reload();
       
       })
