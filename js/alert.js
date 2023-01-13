@@ -1,3 +1,5 @@
+// Create a bootstrap alert
+
 export function bootstrapAlert(message, type) {
     var alert = document.createElement('div');
     alert.setAttribute('role', 'alert');

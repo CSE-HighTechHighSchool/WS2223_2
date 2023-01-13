@@ -42,7 +42,7 @@ let orderLink = document.getElementById("orderLink");
 let end = document.getElementById("end");
 let currentUser = null;
 
-// ----------------------- Get User's Name'Name ------------------------------
+// ----------------------- Get User's Name ------------------------------
 
 function getUsername() {
 // Get the user's name from storage
@@ -73,56 +73,68 @@ auth.signOut().then(() => {
   console.log(error);
 })}
 
+// when window loads
+
 window.onload = window.addEventListener("load",navload(),false);
 
 export function navload () {
-getUsername();
 
-if (currentUser == null) {
+  // get username 
 
-  signOutLink.innerText = "Sign In";
-  signOutLink.href = "signIn.html";
-  signOutLink.classList.add("strong");
-  orderLink.remove();
+  getUsername();
 
-} else {
-  console.log(currentUser);
-  console.log(currentUser.uid)
-  signOutLink.innerText = "Sign Out";
-  signOutLink.classList.add("strong")
-  signOutLink.addEventListener("click", (e) => {
-    e.preventDefault();
-    signOutUser();
-  });
-  
-  let adminLink = document.createElement("a");
-  adminLink.setAttribute("id", "adminLink");
-  adminLink.classList.add("nav-link");
-  adminLink.classList.add("hover-underline-animation");
-  adminLink.classList.add("strong");
+  // if user is null
 
-  end.appendChild(adminLink);
-  
+  if (currentUser == null) {
+    signOutLink.innerText = "Sign In";
+    signOutLink.href = "signIn.html";
+    signOutLink.classList.add("strong");
+    orderLink.remove();
 
-  if (currentUser.isAdmin) {
-    adminLink.setAttribute("href", "admin.html");
-    adminLink.innerText = "Admin Console";
-  } else {
-    adminLink.innerText = "My Account"
-    adminLink.setAttribute("href", "myacc.html")
-  }
-  console.log(window.location.href)
-  if (window.location.href.match("admin.html") != null) {
-    adminLink.classList.add("active");
-  } else if (window.location.href.match("myacc.html") != null) {
-    adminLink.classList.add("active");
-    welcome_message.innerHTML = "Welcome, " + currentUser.firstName + ".";
-    //insert code here
+  } 
+
+  // if user is signed in 
+
+  else {
+    console.log(currentUser);
+    console.log(currentUser.uid)
+    signOutLink.innerText = "Sign Out";
+    signOutLink.classList.add("strong")
+    signOutLink.addEventListener("click", (e) => {
+      e.preventDefault();
+      signOutUser();
+    });
     
-    end.classList.add("active");
-  }
-}
-};
+    let adminLink = document.createElement("a");
+    adminLink.setAttribute("id", "adminLink");
+    adminLink.classList.add("nav-link");
+    adminLink.classList.add("hover-underline-animation");
+    adminLink.classList.add("strong");
+
+    end.appendChild(adminLink);
+
+    // if user is admin
+
+    if (currentUser.isAdmin) {
+      adminLink.setAttribute("href", "admin.html");
+      adminLink.innerText = "Admin Console";
+    } else {
+      adminLink.innerText = "My Account"
+      adminLink.setAttribute("href", "myacc.html")
+    }
+    console.log(window.location.href)
+    if (window.location.href.match("admin.html") != null) {
+      adminLink.classList.add("active");
+    } else if (window.location.href.match("myacc.html") != null) {
+      adminLink.classList.add("active");
+      welcome_message.innerHTML = "Welcome, " + currentUser.firstName + ".";
+      
+      end.classList.add("active");
+    }
+}};
+
+// validate if fields are completed properly
+
 function validation(firstName, lastName, email) {
     let fNameRegex = /^[a-zA-Z'!]+$/;
     let lNameRegex = /^[a-zA-Z\s'!]+$/;
@@ -136,9 +148,13 @@ function validation(firstName, lastName, email) {
     return true;
 }
 
+// check if input is empty
+
 function isEmptyorSpaces(str){
     return str === null || str.match(/^ *$/) !== null
   }
+
+// Update Account Info
 
 function updateAccountInfo(name, newemail, userID) {
     // Set the data
@@ -151,24 +167,27 @@ function updateAccountInfo(name, newemail, userID) {
 
     if (validation(firstName, lastName, newemail)) {
         updateEmail(auth.currentUser, newemail).then(() => {
-            // Email updated!
-            // ...
+            // email updated in authorization
+            
         }).catch((error) => {
-            // An error occurred
-            // ...
+            // error occurred 
+            bootstrapAlert(`Error: ${error.code} - ${error.message}`);
         });
         
         update(ref(db, `users/${userID}/accountInfo`), {
+            // set new data
             email: newemail,
             firstName: firstName,
             lastName: lastName,
         })
         .then(() => {
+            // data updated 
             alert("Data updated successfully");
             window.location.href = "myacc.html";
         })
         .catch((error) => {
-            alert(`Error: ${error.code} - ${error.message}`);
+            // error occurred
+            bootstrapAlert(`Error: ${error.code} - ${error.message}`);
         });
     
         

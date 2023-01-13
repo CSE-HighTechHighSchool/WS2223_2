@@ -73,10 +73,15 @@ function signOutUser() {
     console.log(error);
 })}
 
+// when window loads
+
 window.onload = window.addEventListener("load",navload(),false);
 
 export function navload () {
+  // get username 
   getUsername();
+
+  // if user is null
 
   if (currentUser == null) {
 
@@ -85,7 +90,11 @@ export function navload () {
     signOutLink.classList.add("strong");
     orderLink.remove();
 
-  } else {
+  } 
+
+  // if user is signed in
+  
+  else {
     console.log(currentUser);
 
     signOutLink.innerText = "Sign Out";
@@ -103,6 +112,7 @@ export function navload () {
 
     end.appendChild(adminLink);
     
+    // if user is admin
 
     if (currentUser.isAdmin) {
       adminLink.setAttribute("href", "admin.html");
@@ -117,7 +127,7 @@ export function navload () {
     } else if (window.location.href.match("myacc.html") != null) {
       adminLink.classList.add("active");
       welcome_message.innerHTML = "Welcome, " + currentUser.firstName + ".";
-      //insert code here
+     
       
       end.classList.add("active");
     }

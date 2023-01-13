@@ -92,8 +92,6 @@ let food_categories = {
 
 // Detect when order form submit button is clicked and do this whole process with it
 
-
-
 async function countTimes() {
 
   let orderCount = 0;
@@ -187,7 +185,12 @@ function defineOrder(orderCount, date, ordernotes, fulfillmentstatus, userID, ap
     });
 };
 
+// Add an item to the order
+
 async function addItem(orderCount, item, quantity, userID) {
+
+  // If nonzero amount of item is ordered
+
   if (quantity > 0) {
     await update(ref(db, `orders/${userID}_${orderCount}/items_ordered`), {
       [item]: quantity,
@@ -195,6 +198,8 @@ async function addItem(orderCount, item, quantity, userID) {
       .catch((error) => {
         bootstrapAlert(`Error: ${error.code} - ${error.message}`, 'danger');
       });
+
+    // Find category of item
 
     let actual_cat = "";
 
@@ -208,6 +213,8 @@ async function addItem(orderCount, item, quantity, userID) {
     console.log(actual_cat)
 
     let itemPrice = 0;
+
+    // Get item's price
 
     await get(ref(db, `prices/${actual_cat}`)).then((snapshot) => {
 
@@ -227,10 +234,16 @@ async function addItem(orderCount, item, quantity, userID) {
 
     return itemPrice * quantity;
 
-  } else {
+  } 
+
+  // none of the item ordered
+  
+  else {
     return 0;
   }
 };
+
+// When order is submitted
 
 let orderSubmission = document.getElementById("order-form");
 orderSubmission.addEventListener("click", (e) => {
@@ -247,12 +260,16 @@ orderSubmission.addEventListener("click", (e) => {
 
   countTimes().then((count) => {
 
-
+  // If items are ordered
 
   if (orderExists) {
+
+  // Define order
+
   defineOrder(count, new Date().toLocaleString(), order_notes.value, false, currentUser.uid, apt_suite.value, address.value, town.value, state.value, zip.value);
-
-
+  
+  // Tally up cost
+  
   let totalCost = 0
 
   for (let i = 0; i < order_form_items.length; i++) {
@@ -272,8 +289,11 @@ orderSubmission.addEventListener("click", (e) => {
   }
 
   } else {
+    // No items ordered
     bootstrapAlert("Please add at least one item to your order.", "danger")
   }}).then(() => {
+
+    // Redirect back to home automatically in 3 seconds
     bootstrapAlert("Order submitted! Redirecting you in a few seconds.", "success");
     setTimeout(() => {  window.location.href = "index.html"; }, 3000);
   }).catch((error) => {

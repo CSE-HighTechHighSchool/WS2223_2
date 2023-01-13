@@ -31,6 +31,8 @@
   // Initialize Database
   const db = getDatabase(app);
 
+
+
 // ---------------- Register New Uswer --------------------------------//
 
 document.getElementById('submitData').addEventListener("click", (e) => {
@@ -128,6 +130,7 @@ document.getElementById('signIn').addEventListener("click", (e) => {
     // Get user input
     const email = document.getElementById('loginEmail').value;
     const password = document.getElementById('loginPassword').value;
+    
     console.log(email, password)
     // Use Firebase to sign in user
     existingLogin(auth, email, password);
@@ -189,5 +192,32 @@ const existingLogin = (auth, email, password) => {
     } else {
       localStorage.setItem("keepLoggedInSwitch", "yes");
       localStorage.setItem("user", JSON.stringify(user));
+    }
+  }
+
+  document.getElementById('displayPassword').addEventListener("click", (e) => {
+    
+    toggleVisibility()
+  });
+
+  function toggleVisibility() {
+    var x = document.getElementById("loginPassword");
+    if (x.type === "password") {
+      x.type = "text";
+    } else {
+      x.type = "password";
+    }
+  }
+
+  document.getElementById('displayPassword2').addEventListener("click", (e) => {
+    toggleVisibility2()
+  });
+
+  function toggleVisibility2() {
+    var x = document.getElementById("userPass");
+    if (x.type === "password") {
+      x.type = "text";
+    } else {
+      x.type = "password";
     }
   }
